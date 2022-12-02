@@ -1,7 +1,5 @@
 package org.example;
 
-import org.openqa.selenium.WebDriver;
-
 public class BasePage {
 
     //Здесь будут все локаторы
