@@ -33,6 +33,8 @@ public class AppTest {
         WebElement logo = webDriver.findElement(By.xpath("//div[@id='header']//img"));
         Assert.assertTrue(logo.isDisplayed());
 
+        System.out.println("________________________\ntest passed: website is opened\n________________________");
+
         webDriver.close();
         webDriver.quit();
 
