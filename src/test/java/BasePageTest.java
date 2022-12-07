@@ -1,6 +1,4 @@
-package org.example;
-
-public class BasePage {
+public class BasePageTest {
 
     //Здесь будут все локаторы
 
