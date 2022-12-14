@@ -9,30 +9,12 @@ import org.testng.annotations.Test;
 //import org.example.factory.WebDriverFactory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageobject.BasePage;
+import pageobject.LandingPage;
+
 import java.time.Duration;
 
-public class LandingPageTest {
+public class LandingPageTest extends BasePageTest {
 
-    @Test
-    public void ifOpened()
-    {
-        WebDriverManager.chromedriver().setup();
-        WebDriver webDriver = new ChromeDriver();
 
-        webDriver.manage().window().maximize();
-//        webDriver.get("http://test.exlab.team/");
-        webDriver.get("http://exlab.team/");
-
-        WebElement firstResult = new WebDriverWait(webDriver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='header']//img")));
-
-        WebElement logo = webDriver.findElement(By.xpath("//div[@id='header']//img"));
-        Assert.assertTrue(logo.isDisplayed());
-
-        System.out.println("________________________\ntest passed: website is opened\n________________________");
-
-        webDriver.close();
-        webDriver.quit();
-
-    }
 }
