@@ -21,22 +21,22 @@ public class BasePage {
     public WebElement logo;
 
     @FindBy(xpath = "//button[@class='sc-ftvSup llXOnR']")
-    private WebElement menuButton;
+    public WebElement menuButton;
 
     @FindBy(xpath = "//a[@href='#about']")
-    private WebElement menuAbout;
+    public WebElement menuAbout;
 
-    @FindBy(xpath = "//a[@href='#//a[@href='#projects']']")
-    private WebElement menuProjects;
+    @FindBy(xpath = "//a[@href='#projects']")
+    public WebElement menuProjects;
 
     @FindBy(xpath = "//a[@href='#mentors']")
-    private WebElement menuMentors;
+    public WebElement menuMentors;
 
     @FindBy(xpath = "//a[@href='#startup']")
-    private WebElement menuStartUp;
+    public WebElement menuStartUp;
 
     @FindBy(xpath = "//div[@class='sc-fnykZs fEkGUM']")
-    private WebElement menuSunIcon;
+    public WebElement menuSunIcon;
 
     public BasePage open () {
         driver.get(baseUrl);
@@ -51,8 +51,16 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
+//    public String getBackgroundClass() {
+//        return menuSunIcon.getClass();
+//    }
+
 //    public WebElement getLogo() {
 //        return logo;
 //    }
+
+    public String getMenuLink(WebElement locator){
+        return locator.getAttribute("data-scroll-to");
+    }
 }
 
