@@ -9,9 +9,14 @@ import static driver.driver.quite;
 
 public class BasePageTest {
 
+    public BasePage basePage;
+
 @BeforeTest
 public void start () {
+
     createDriver();
+    basePage = new BasePage();
+    basePage.open();
 }
 
 @AfterTest
@@ -20,11 +25,9 @@ public void finish() {
 }
 
     @Test
-    public void pageOpened()
-    {
-        BasePage basePage = new BasePage();
+    public void pageOpened() {
 
-        String url = basePage.open().getUrl();
+        String url = basePage.getUrl();
         Assert.assertEquals(url, "http://test.exlab.team/", "TEST FAILED: Url is not the same");
 
         String title = basePage.getTitle();
@@ -45,31 +48,70 @@ public void finish() {
 //    }
 
 
-    public void isLinkExist(WebElement locator, String expectedText, BasePage basePage){
+    public void isLinkMatch(WebElement locator, String expectedText){
 
-        String menuLink = basePage.open().getMenuLink(locator);
+        String menuLink = basePage.getMenuLink(locator);
         System.out.println("menuLink for " + locator.getText() + " = " + menuLink);
         Assert.assertEquals(menuLink,expectedText,"TEST FAILED: link " + locator.getText() + " doesn't match to expected");
         System.out.println("________________________\nTEST PASSED: menu " + locator.getText() +
-                " is exist and link is matched with expected" +
+                " is displayed and link is matched with expected" +
                 "\n________________________");
     }
 
-    @Test
-    public void aboutLinkExist(){
-        BasePage basePage = new BasePage();
-        isLinkExist(basePage.menuAbout, "#about", basePage);
+//    public void printMenuItemDisplayed(WebElement locator){
+    public void isMenuItemDisplayed(WebElement locator) {
+    Assert.assertTrue(locator.isDisplayed());
+        System.out.println("TEST PASSED: Menu " + locator.getText() + " is displayed");
     }
 
     @Test
-    public void projectsLinkExist(){
-        BasePage basePage = new BasePage();
-        isLinkExist(basePage.menuProjects, "#projects", basePage);
+    public void isHeaderLogoDisplayed() {
+//    Assert.assertTrue(basePage.logo.isDisplayed());
+        isMenuItemDisplayed(basePage.logo);
     }
 
     @Test
-    public void mentorsLinkExist(){
-        BasePage basePage = new BasePage();
-        isLinkExist(basePage.menuMentors, "#mentors", basePage);
+    public void menuAboutDisplayed(){
+        isMenuItemDisplayed(basePage.menuAbout);
+    }
+
+    @Test
+    public void menuAboutLink(){
+        isLinkMatch(basePage.menuAbout, "#about");
+    }
+
+    @Test
+    public void menuProjectDisplayed(){
+        isMenuItemDisplayed(basePage.menuProjects);
+    }
+
+    @Test
+    public void menuProjectsLink(){
+        isLinkMatch(basePage.menuProjects, "#projects");
+    }
+
+    @Test
+    public void menuMentorsDisplayed(){
+        isMenuItemDisplayed(basePage.menuMentors);
+    }
+
+    @Test
+    public void menuMentorsLink(){
+        isLinkMatch(basePage.menuMentors, "#mentors");
+    }
+
+    @Test
+    public void menuStartUpDisplayed(){
+        isMenuItemDisplayed(basePage.menuStartUp);
+    }
+
+    @Test
+    public void menuStartUpLink(){
+        isLinkMatch(basePage.menuStartUp, "#startup");
+    }
+
+    @Test
+    public void menuSunIconIsDisplayed(){
+        isMenuItemDisplayed(basePage.menuSunIcon);
     }
 }
