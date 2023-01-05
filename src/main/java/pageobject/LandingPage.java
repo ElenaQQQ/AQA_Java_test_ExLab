@@ -18,6 +18,34 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='about']/div/div")
     private WebElement aboutUsWhyXLabHeader;
 
+    public WebElement getBigLogo() {
+        return bigLogo;
+    }
+
+    public WebElement getAboutUsHeader() {
+        return aboutUsHeader;
+    }
+
+    public WebElement getAboutUsText() {
+        return aboutUsText;
+    }
+
+    public WebElement getAboutUsWhyXLabHeader() {
+        return aboutUsWhyXLabHeader;
+    }
+
+    public WebElement getAboutUsWhyXLabText() {
+        return aboutUsWhyXLabText;
+    }
+
+    public WebElement getAboutUsWhyXLabJoinButton() {
+        return aboutUsWhyXLabJoinButton;
+    }
+
+    public WebElement getProjectsHeader() {
+        return projectsHeader;
+    }
+
     @FindBy(xpath = "//div[@id='about']/div/ol")
     private WebElement aboutUsWhyXLabText;
 

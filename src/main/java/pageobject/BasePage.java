@@ -20,28 +20,60 @@ public class BasePage {
     }
 
     @FindBy(id = "logo_mobile")
-    public WebElement logo;
+    private WebElement logo;
+
+    public WebElement getLogo() {
+        return logo;
+    }
 
     @FindBy(xpath = "//a[@href='#about']")
-    public WebElement menuAbout;
+    private WebElement menuAbout;
+
+    public WebElement getMenuAbout() {
+        return menuAbout;
+    }
 
     @FindBy(xpath = "//a[@href='#projects']")
-    public WebElement menuProjects;
+    private WebElement menuProjects;
+
+    public WebElement getMenuProjects() {
+        return menuProjects;
+    }
 
     @FindBy(xpath = "//a[@href='#mentors']")
-    public WebElement menuMentors;
+    private WebElement menuMentors;
+
+    public WebElement getMenuMentors() {
+        return menuMentors;
+    }
 
     @FindBy(xpath = "//a[@href='#startup']")
-    public WebElement menuStartUp;
+    private WebElement menuStartUp;
+
+    public WebElement getMenuStartUp() {
+        return menuStartUp;
+    }
 
     @FindBy(xpath = "//div[contains(@class,'fnykZs')]")
-    public WebElement menuBackgroundChange;
+    private WebElement menuBackgroundChange;
+
+    public WebElement getMenuBackgroundChange() {
+        return menuBackgroundChange;
+    }
 
     @FindBy(xpath="//div[contains(@class,'sc-gsnTZi')]")
-    public WebElement sidePicture;
+    private WebElement sidePicture;
+
+    public WebElement getSidePicture() {
+        return sidePicture;
+    }
 
     @FindBy(xpath = "//div[@class='sc-hAZoDl hrEelO']")
     private WebElement joinButton;
+
+    public WebElement getJoinButton() {
+        return joinButton;
+    }
 
     public BasePage open () {
         driver.get(baseUrl);
@@ -56,25 +88,12 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
-//    public String getBackgroundClass() {
-//        return menuSunIcon.getClass();
-//    }
-
-//    public WebElement getLogo() {
-//        return logo;
-//    }
-
     public String getMenuLink(WebElement locator){
         return locator.getAttribute("data-scroll-to");
     }
 
-    public WebElement getJoinButton() {
-        return joinButton;
-    }
-
     public BasePage changeToNewTab() {
         ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
-//        System.out.println("Tabs: " + tabs);
         getDriver().switchTo().window(tabs.get(1));
         return this;
     }

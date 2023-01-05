@@ -30,7 +30,6 @@ public void finish() {
 
     @Test
     public void pageOpened() {
-
         String url = basePage.getUrl();
         Assert.assertEquals(url, "http://test.exlab.team/", "TEST FAILED: Url is not the same");
 
@@ -44,22 +43,22 @@ public void finish() {
     }
 
     public void isLinkMatch(WebElement locator, String expectedText){
-
         String menuLink = basePage.getMenuLink(locator);
-//        System.out.println("menuLink for " + locator.getText() + " = " + menuLink);
-        Assert.assertEquals(menuLink,expectedText,"TEST FAILED: link " + locator.getText() + " doesn't match to expected");
+        Assert.assertEquals(menuLink, expectedText,
+                "TEST FAILED: link " + locator.getText() + " doesn't match to expected");
         System.out.println("________________________\nTEST PASSED: menu " + locator.getText() +
                 " is displayed and link is matched with expected" +
                 "\n________________________");
     }
 
     public void isMenuItemDisplayed(WebElement locator) {
-    Assert.assertTrue(locator.isDisplayed());
+    Assert.assertTrue(locator.isDisplayed(),
+            "TEST FAILED: "+ locator.getText() + " is not displayed");
         System.out.println("TEST PASSED: Menu " + locator.getText() + " is displayed");
     }
 
-        @Test
-    public void ifDarkBackground(){
+    @Test
+    public void backgroundIsDark(){
     //Logo in header is dark
         Assert.assertEquals(basePage.logo.getAttribute("class"), "sc-jqUVSM EnPDN",
                 "Test failed: background is not dark - logo is not dark");
@@ -73,47 +72,47 @@ public void finish() {
     }
 
     @Test
-    public void isHeaderLogoDisplayed() {
+    public void headerLogoIsDisplayed() {
         isMenuItemDisplayed(basePage.logo);
     }
 
     @Test
-    public void menuAboutDisplayed(){
+    public void menuAboutIsDisplayed(){
         isMenuItemDisplayed(basePage.menuAbout);
     }
 
     @Test
-    public void menuAboutLink(){
+    public void menuAboutLinkIsCorrect(){
         isLinkMatch(basePage.menuAbout, "#about");
     }
 
     @Test
-    public void menuProjectDisplayed(){
+    public void menuProjectsIsDisplayed(){
         isMenuItemDisplayed(basePage.menuProjects);
     }
 
     @Test
-    public void menuProjectsLink(){
+    public void menuProjectsLinkIsCorrect(){
         isLinkMatch(basePage.menuProjects, "#projects");
     }
 
     @Test
-    public void menuMentorsDisplayed(){
+    public void menuMentorsIsDisplayed(){
         isMenuItemDisplayed(basePage.menuMentors);
     }
 
     @Test
-    public void menuMentorsLink(){
+    public void menuMentorsLinkIsCorrect(){
         isLinkMatch(basePage.menuMentors, "#mentors");
     }
 
     @Test
-    public void menuStartUpDisplayed(){
+    public void menuStartUpIsDisplayed(){
         isMenuItemDisplayed(basePage.menuStartUp);
     }
 
     @Test
-    public void menuStartUpLink(){
+    public void menuStartUpLinkIsCorrect(){
         isLinkMatch(basePage.menuStartUp, "#startup");
     }
 
@@ -123,26 +122,25 @@ public void finish() {
     }
 
     @Test
-    public void menuBackgroundChangeWorks(){
-//        basePage.menuBackgroundChange.click();
-//Check if we have dark theme, then chek if it changes to light. If not - vice versa
+    public void menuBackgroundChangeWorksCorrectly(){
+
+//Check if we have dark theme, then check if it changes to light. If not - vice versa
     if (basePage.logo.getAttribute("class").contains("EnPDN")) {
         basePage.menuBackgroundChange.click();
         Assert.assertTrue(basePage.logo.getAttribute("class").contains("FjAfx"),
-                "Test failed: background not changes");
+                "Test failed: background color not changes");
     }
     else {
         basePage.menuBackgroundChange.click();
         Assert.assertTrue(basePage.logo.getAttribute("class").contains("EnPDN"),
-                "Test failed: background not changes");
+                "Test failed: background color not changes");
     }
-        System.out.println("________________________\nTEST PASSED: background changes\n________________________");
+        System.out.println("________________________\nTEST PASSED: background color changes correctly\n________________________");
     }
 
     @Test
     public void joinUsButtonIsDisplayed() {
         isMenuItemDisplayed(basePage.getJoinButton());
-
     }
 
     @Test
