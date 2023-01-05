@@ -1,17 +1,21 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageobject.BasePage;
-import static driver.driver.createDriver;
-import static driver.driver.quite;
+
+import java.time.Duration;
+import java.util.ArrayList;
+
+import static driver.driver.*;
 
 public class BasePageTest {
 
     public BasePage basePage;
 
-@BeforeTest
+@BeforeMethod
 public void start () {
 
     createDriver();
@@ -19,7 +23,7 @@ public void start () {
     basePage.open();
 }
 
-@AfterTest
+@AfterMethod
 public void finish() {
         quite();
 }
@@ -39,34 +43,37 @@ public void finish() {
                 "\n- Logo is visible\n________________________");
     }
 
-//    @Test
-//    public void ifDarkBackground(){
-//        BasePage basePage = new BasePage();
-//
-//        String currentBackgroundClass = basePage.open().getBackgroundClass();
-//        Assert.assertEquals(currentBackgroundClass,"","Test failed: background is not dark");
-//    }
-
-
     public void isLinkMatch(WebElement locator, String expectedText){
 
         String menuLink = basePage.getMenuLink(locator);
-        System.out.println("menuLink for " + locator.getText() + " = " + menuLink);
+//        System.out.println("menuLink for " + locator.getText() + " = " + menuLink);
         Assert.assertEquals(menuLink,expectedText,"TEST FAILED: link " + locator.getText() + " doesn't match to expected");
         System.out.println("________________________\nTEST PASSED: menu " + locator.getText() +
                 " is displayed and link is matched with expected" +
                 "\n________________________");
     }
 
-//    public void printMenuItemDisplayed(WebElement locator){
     public void isMenuItemDisplayed(WebElement locator) {
     Assert.assertTrue(locator.isDisplayed());
         System.out.println("TEST PASSED: Menu " + locator.getText() + " is displayed");
     }
 
+        @Test
+    public void ifDarkBackground(){
+    //Logo in header is dark
+        Assert.assertEquals(basePage.logo.getAttribute("class"), "sc-jqUVSM EnPDN",
+                "Test failed: background is not dark - logo is not dark");
+        //Theme icon is a sun
+        Assert.assertTrue(basePage.menuBackgroundChange.getAttribute("class").contains("fEkGUM"),
+                "Test failed: background is not dark - icon is not a sun");
+        //Image going through all page is in dark option
+        Assert.assertTrue(basePage.sidePicture.getAttribute("class").contains("kjBOCW"),
+                "Test failed: background is not dark - side image is not at dark option");
+            System.out.println("________________________\nTEST PASSED: background is dark\n________________________");
+    }
+
     @Test
     public void isHeaderLogoDisplayed() {
-//    Assert.assertTrue(basePage.logo.isDisplayed());
         isMenuItemDisplayed(basePage.logo);
     }
 
@@ -111,7 +118,40 @@ public void finish() {
     }
 
     @Test
-    public void menuSunIconIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuSunIcon);
+    public void menuBackgroundChangeIsDisplayed(){
+        isMenuItemDisplayed(basePage.menuBackgroundChange);
     }
+
+    @Test
+    public void menuBackgroundChangeWorks(){
+//        basePage.menuBackgroundChange.click();
+//Check if we have dark theme, then chek if it changes to light. If not - vice versa
+    if (basePage.logo.getAttribute("class").contains("EnPDN")) {
+        basePage.menuBackgroundChange.click();
+        Assert.assertTrue(basePage.logo.getAttribute("class").contains("FjAfx"),
+                "Test failed: background not changes");
+    }
+    else {
+        basePage.menuBackgroundChange.click();
+        Assert.assertTrue(basePage.logo.getAttribute("class").contains("EnPDN"),
+                "Test failed: background not changes");
+    }
+        System.out.println("________________________\nTEST PASSED: background changes\n________________________");
+    }
+
+    @Test
+    public void joinUsButtonIsDisplayed() {
+        isMenuItemDisplayed(basePage.getJoinButton());
+
+    }
+
+    @Test
+    public void joinUsButtonOpensCorrectLink() {
+        basePage.getJoinButton().click();
+        basePage.changeToNewTab();
+        Assert.assertEquals(basePage.getUrl(), "https://t.me/ExLab_registration_bot",
+                "TEST FAILED: Url is not that expected");
+        System.out.println("________________________\nTEST PASSED: joinUs button opens expected URL\n________________________");
+    }
+
 }

@@ -1,10 +1,12 @@
 package pageobject;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.ArrayList;
+
 import static driver.driver.*;
 public class BasePage {
 
@@ -20,9 +22,6 @@ public class BasePage {
     @FindBy(id = "logo_mobile")
     public WebElement logo;
 
-    @FindBy(xpath = "//button[@class='sc-ftvSup llXOnR']")
-    public WebElement menuButton;
-
     @FindBy(xpath = "//a[@href='#about']")
     public WebElement menuAbout;
 
@@ -35,8 +34,14 @@ public class BasePage {
     @FindBy(xpath = "//a[@href='#startup']")
     public WebElement menuStartUp;
 
-    @FindBy(xpath = "//div[@class='sc-fnykZs fEkGUM']")
-    public WebElement menuSunIcon;
+    @FindBy(xpath = "//div[contains(@class,'fnykZs')]")
+    public WebElement menuBackgroundChange;
+
+    @FindBy(xpath="//div[contains(@class,'sc-gsnTZi')]")
+    public WebElement sidePicture;
+
+    @FindBy(xpath = "//div[@class='sc-hAZoDl hrEelO']")
+    private WebElement joinButton;
 
     public BasePage open () {
         driver.get(baseUrl);
@@ -61,6 +66,17 @@ public class BasePage {
 
     public String getMenuLink(WebElement locator){
         return locator.getAttribute("data-scroll-to");
+    }
+
+    public WebElement getJoinButton() {
+        return joinButton;
+    }
+
+    public BasePage changeToNewTab() {
+        ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
+//        System.out.println("Tabs: " + tabs);
+        getDriver().switchTo().window(tabs.get(1));
+        return this;
     }
 }
 
