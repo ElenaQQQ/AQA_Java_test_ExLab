@@ -12,7 +12,9 @@ import java.time.Duration;
 
 import static driver.driver.*;
 
-public class LandingPageTest extends BasePageTest {
+public class LandingPageTest {
+
+//    public class LandingPageTest extends BasePageTest {
 
     public LandingPage landingPage;
     public BasePage basePage1;
@@ -49,5 +51,22 @@ public class LandingPageTest extends BasePageTest {
     public void aboutUsTextIsDisplayed(){
         isElementDisplayed(landingPage.getAboutUsText());
     }
+
+    @Test
+    public void aboutUsWhyXLabHeaderIsDisplayed(){
+        isElementDisplayed(landingPage.getAboutUsWhyXLabHeader());
+    }
+
+    @Test
+    public void aboutUsWhyXLabTextIsDisplayed(){
+        isElementDisplayed(landingPage.getAboutUsWhyXLabText());
+    }
+
+    @Test
+    public void aboutUsJoinButtonIsDisplayed(){
+        isElementDisplayed(landingPage.getAboutUsWhyXLabJoinButton());
+    }
+
+
 
 }
