@@ -36,7 +36,7 @@ public void finish() {
         String title = basePage.getTitle();
         Assert.assertEquals(title,"ExLab Landing", "TEST FAILED: title is not the same");
 
-        Assert.assertTrue(basePage.logo.isDisplayed());
+        Assert.assertTrue(basePage.getLogo().isDisplayed());
 
         System.out.println("________________________\nTEST PASSED: website is opened:\n- URL is the same\n- Title is the same" +
                 "\n- Logo is visible\n________________________");
@@ -60,79 +60,79 @@ public void finish() {
     @Test
     public void backgroundIsDark(){
     //Logo in header is dark
-        Assert.assertEquals(basePage.logo.getAttribute("class"), "sc-jqUVSM EnPDN",
+        Assert.assertEquals(basePage.getLogo().getAttribute("class"), "sc-jqUVSM EnPDN",
                 "Test failed: background is not dark - logo is not dark");
         //Theme icon is a sun
-        Assert.assertTrue(basePage.menuBackgroundChange.getAttribute("class").contains("fEkGUM"),
+        Assert.assertTrue(basePage.getMenuBackgroundChange().getAttribute("class").contains("fEkGUM"),
                 "Test failed: background is not dark - icon is not a sun");
         //Image going through all page is in dark option
-        Assert.assertTrue(basePage.sidePicture.getAttribute("class").contains("kjBOCW"),
+        Assert.assertTrue(basePage.getSidePicture().getAttribute("class").contains("kjBOCW"),
                 "Test failed: background is not dark - side image is not at dark option");
             System.out.println("________________________\nTEST PASSED: background is dark\n________________________");
     }
 
     @Test
     public void headerLogoIsDisplayed() {
-        isMenuItemDisplayed(basePage.logo);
+        isMenuItemDisplayed(basePage.getLogo());
     }
 
     @Test
     public void menuAboutIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuAbout);
+        isMenuItemDisplayed(basePage.getMenuAbout());
     }
 
     @Test
     public void menuAboutLinkIsCorrect(){
-        isLinkMatch(basePage.menuAbout, "#about");
+        isLinkMatch(basePage.getMenuAbout(), "#about");
     }
 
     @Test
     public void menuProjectsIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuProjects);
+        isMenuItemDisplayed(basePage.getMenuProjects());
     }
 
     @Test
     public void menuProjectsLinkIsCorrect(){
-        isLinkMatch(basePage.menuProjects, "#projects");
+        isLinkMatch(basePage.getMenuProjects(), "#projects");
     }
 
     @Test
     public void menuMentorsIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuMentors);
+        isMenuItemDisplayed(basePage.getMenuMentors());
     }
 
     @Test
     public void menuMentorsLinkIsCorrect(){
-        isLinkMatch(basePage.menuMentors, "#mentors");
+        isLinkMatch(basePage.getMenuMentors(), "#mentors");
     }
 
     @Test
     public void menuStartUpIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuStartUp);
+        isMenuItemDisplayed(basePage.getMenuStartUp());
     }
 
     @Test
     public void menuStartUpLinkIsCorrect(){
-        isLinkMatch(basePage.menuStartUp, "#startup");
+        isLinkMatch(basePage.getMenuStartUp(), "#startup");
     }
 
     @Test
     public void menuBackgroundChangeIsDisplayed(){
-        isMenuItemDisplayed(basePage.menuBackgroundChange);
+        isMenuItemDisplayed(basePage.getMenuBackgroundChange());
     }
 
     @Test
     public void menuBackgroundChangeWorksCorrectly(){
 
 //Check if we have dark theme, then check if it changes to light. If not - vice versa
-    if (basePage.logo.getAttribute("class").contains("EnPDN")) {
-        basePage.menuBackgroundChange.click();
-        Assert.assertTrue(basePage.logo.getAttribute("class").contains("FjAfx"),
+    if (basePage.getLogo().getAttribute("class").contains("EnPDN")) {
+        basePage.getMenuBackgroundChange().click();
+        Assert.assertTrue(basePage.getLogo().getAttribute("class").contains("FjAfx"),
                 "Test failed: background color not changes");
     }
     else {
-        basePage.menuBackgroundChange.click();
-        Assert.assertTrue(basePage.logo.getAttribute("class").contains("EnPDN"),
+        basePage.getMenuBackgroundChange().click();
+        Assert.assertTrue(basePage.getLogo().getAttribute("class").contains("EnPDN"),
                 "Test failed: background color not changes");
     }
         System.out.println("________________________\nTEST PASSED: background color changes correctly\n________________________");

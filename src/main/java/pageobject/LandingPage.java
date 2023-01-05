@@ -9,53 +9,53 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='header']//img")
     private WebElement bigLogo;
 
-    @FindBy(xpath = "//div[@id='about']/div[1]")
-    public WebElement aboutUsHeader;
-
-    @FindBy(xpath = "//div[@id='about']/div/p")
-    private WebElement aboutUsText;
-
-    @FindBy(xpath = "//div[@id='about']/div/div")
-    private WebElement aboutUsWhyXLabHeader;
-
     public WebElement getBigLogo() {
         return bigLogo;
     }
+
+    @FindBy(xpath = "//div[@id='about']/div[1]")
+    private WebElement aboutUsHeader;
 
     public WebElement getAboutUsHeader() {
         return aboutUsHeader;
     }
 
+    @FindBy(xpath = "//div[@id='about']/div/p")
+    private WebElement aboutUsText;
+
     public WebElement getAboutUsText() {
         return aboutUsText;
     }
+
+    @FindBy(xpath = "//div[@id='about']/div/div")
+    private WebElement aboutUsWhyXLabHeader;
 
     public WebElement getAboutUsWhyXLabHeader() {
         return aboutUsWhyXLabHeader;
     }
 
+    @FindBy(xpath = "//div[@id='about']/div/ol")
+    private WebElement aboutUsWhyXLabText;
+
     public WebElement getAboutUsWhyXLabText() {
         return aboutUsWhyXLabText;
     }
+
+    @FindBy(xpath = "//div[@id='about']/div/div/a")
+    private WebElement aboutUsWhyXLabJoinButton;
 
     public WebElement getAboutUsWhyXLabJoinButton() {
         return aboutUsWhyXLabJoinButton;
     }
 
+    @FindBy(xpath = "//div[@id='projects']/div/div[@data-scroll='true']")
+    private WebElement projectsHeader;
+
     public WebElement getProjectsHeader() {
         return projectsHeader;
     }
 
-    @FindBy(xpath = "//div[@id='about']/div/ol")
-    private WebElement aboutUsWhyXLabText;
-
-    @FindBy(xpath = "//div[@id='about']/div/div/a")
-    public WebElement aboutUsWhyXLabJoinButton;
-
-    @FindBy(xpath = "//div[@id='projects']/div/div[@data-scroll='true']")
-    private WebElement projectsHeader;
-
-//    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]")
+    //    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]")
 //    private WebElement projectsXLabHeader;
 //
 //    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]/following-sibling::img")

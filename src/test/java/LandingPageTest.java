@@ -34,7 +34,7 @@ public class LandingPageTest extends BasePageTest {
     }
 
     public void isElementDisplayed(WebElement elementLocator){
-        js.executeScript("arguments[0].scrollIntoView();",elementLocator);
+        js.executeScript("arguments[0].scrollIntoView();", elementLocator);
         Assert.assertTrue(elementLocator.isDisplayed(),
                 "-----\nTEST FAILED: Element " + elementLocator.getText() + " is not displayed\n-----");
         System.out.println("-----\nTEST PASSED: Element " + elementLocator.getText() + " is displayed\n-----");
