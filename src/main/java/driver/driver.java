@@ -12,10 +12,12 @@ private static WebDriver driver;
 public static void createDriver(){
     WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver();
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+//    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-//    WebElement firstResult = new WebDriverWait(driver, Duration.ofSeconds(10))
-//            .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='header']//img")));
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+    driver.manage().window().maximize();
 }
 
 public static WebDriver getDriver (){
