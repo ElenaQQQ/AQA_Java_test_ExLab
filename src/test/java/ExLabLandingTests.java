@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -7,9 +8,13 @@ import static driver.driver.createDriver;
 import static driver.driver.quite;
 
 public class ExLabLandingTests {
+    protected LandingPage landingPage;
 
     @BeforeMethod
-    public void start () { createDriver(); }
+    public void start () {
+        createDriver();
+        landingPage = new LandingPage();
+    }
 
     @AfterMethod
     public void finish() {
@@ -19,8 +24,6 @@ public class ExLabLandingTests {
     @Test (description = "ExLab landing is available by URL", groups = "Header")
     public void test_1() {
 
-        LandingPage landingPage = new LandingPage();
-
         landingPage.open().ifUrlExLabMatches();
         landingPage.ifTitleExLabMatches();
         landingPage.ifLogoDisplayed();
@@ -29,6 +32,13 @@ public class ExLabLandingTests {
                 "- URL is matches\n" +
                 "- Title is matches" + "\n" +
                 "- Logo is visible");
+    }
+
+    @Test (description = "Page opens with dark background", groups = "Header")
+    public void test_2() {
+        String backgroundClassAtStart = landingPage.open().takeBackgroungClass();
+        Assert.assertTrue(backgroundClassAtStart.contains("fEkGUM"),
+                "TEST FAILED: Page not opens with dark background");
     }
 
     @Test (description = "ExLab logo is displayed", groups = "Header")
@@ -42,7 +52,7 @@ public class ExLabLandingTests {
     }
 
     @Test (description = "About us menu link opens About us module", groups = "Header")
-    public void test_5 (){
+    public void test_5 ()  {
         new LandingPage().open().menuAboutUsClick().isAboutUsHeaderDisplayed();
     }
 
@@ -52,18 +62,18 @@ public class ExLabLandingTests {
     }
 
     @Test (description = "Menu item Projects opens Projects module", groups = "Header")
-    public void test_7(){
+    public void test_7() throws InterruptedException {
         new LandingPage().open().menuProjectsClick().isProjectsHeaderDisplayed();
     }
 
     @Test (description = "Menu item Mentors is displayed", groups = "Header")
-    public void test_8(){
+    public void test_8() {
         new LandingPage().open().isMenuMentorsDisplayed();
     }
 
     @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
-    public void test_9(){
-        new LandingPage().open().menuMentorsClick().isMentorsHeaderDisplayed();
+    public void test_9() throws InterruptedException {
+        new LandingPage().open().menuMentorsClick().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
     }
 
     @Test (description = "Menu item StartUp is displayed", groups = "Header")
@@ -72,15 +82,29 @@ public class ExLabLandingTests {
     }
 
     @Test (description = "Menu item StartUp opens Start up module", groups = "Header")
-    public void test_11(){
-        new LandingPage().open().menuStartUpClick().isStartUpHeaderDisplayed();
+    public void test_11() throws InterruptedException {
+        new LandingPage().open().menuStartUpClick().isStartUpHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
     }
+
+//    @Test
+//    public void test_scrollToTheEndAndBack() throws InterruptedException {
+//        new LandingPage().open().menuAboutUsClick().scrollToTheEnd().isProjectsHeaderDisplayed();
+//    }
 
     @Test (description = "BackgroundColor Icon is displayed", groups = "Header")
     public void test_12(){
         new LandingPage().open().backgroundColorIconDisplayed();
     }
 
+    @Test(description = "Mentors header is displayed", groups = "Mentors")
+    public void test_25() throws InterruptedException {
+        new LandingPage().open().moveToMentorsHeader().isMentorsHeaderDisplayed();
+    }
+
+//    @Test(description = "Mentors info opens by + click")
+//    public void test_26()  {
+//        new LandingPage().open().menuMentorsClick().isMentorsHeaderDisplayed().clickMentorsHeaderPlus();
+//    }
 
 
 

@@ -1,12 +1,11 @@
 package pageobject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-import java.time.Duration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage extends BasePage {
 
@@ -25,7 +24,8 @@ public class LandingPage extends BasePage {
 //    private final By aboutUsWhyXLabText = By.xpath("//div[@id='about']/div/ol");
 //    private final By aboutUsWhyXLabJoinButton = By.xpath("//div[@id='about']/div/div/a");
 //    private final By projectsHeader = By.xpath("//div[@id='projects']/div/div[@data-scroll='true']");
-
+//    private final By mentorsHeader = By.xpath("//div[@id='mentors']/div[1]");
+//    private final By startUpHeader = By.xpath("//div[@id='startup']//div[contains(@data-scroll-target,'#startup')]");
 
     @FindBy(id = "logo_mobile")
     private WebElement logo;
@@ -75,8 +75,11 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id=\"startup\"]/div/div[contains(@data-scroll-target,'#startup')]")
     private WebElement startUpHeader;
 
-    @FindBy(xpath = "//div[@id=\"startup\"]/div/div[contains(@data-scroll-target,'#mentors')]")
+    @FindBy(xpath = "//div[@id='mentors']/div[1]")
     private WebElement mentorsHeader;
+
+    @FindBy (xpath = "")
+    private WebElement mentorsHeaderPlus;
 
     @FindBy(xpath = "//div[@id='header']//div[contains(@class,'sc-fnykZs')]")
     private WebElement backgroundColorIcon;
@@ -129,15 +132,17 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public String takeBackgroungClass(){
+
+        return backgroundColorIcon.getAttribute("class");
+    }
+
     public LandingPage menuAboutUsClick(){
         menuAbout.click();
         return this;
     }
 
-    public void isAboutUsHeaderDisplayed(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
-//        wait.until(ExpectedConditions.visibilityOf(aboutUsHeader));
-
+    public void isAboutUsHeaderDisplayed()  {
         isDisplayed(aboutUsHeader);
     }
 
@@ -145,15 +150,12 @@ public class LandingPage extends BasePage {
         isDisplayed(menuProjects);
     }
 
-    public LandingPage menuProjectsClick(){
-        menuProjects.click();
-
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+    public LandingPage menuProjectsClick() throws InterruptedException {
+        delayAndClick(menuProjects);
         return this;
     }
 
     public LandingPage isProjectsHeaderDisplayed(){
-        wait.until(ExpectedConditions.visibilityOf(projectsHeader));
         isDisplayed(projectsHeader);
         return this;
     }
@@ -162,12 +164,12 @@ public class LandingPage extends BasePage {
         isDisplayed(menuMentors);
     }
 
-    public LandingPage menuMentorsClick(){
-        menuMentors.click();
+    public LandingPage menuMentorsClick() throws InterruptedException {
+        delayAndClick(menuMentors);
         return this;
     }
 
-    public void isMentorsHeaderDisplayed(){
+    public void isMentorsHeaderDisplayed() throws InterruptedException {
         isDisplayed(mentorsHeader);
     }
 
@@ -175,8 +177,8 @@ public class LandingPage extends BasePage {
         isDisplayed(menuStartUp);
     }
 
-    public LandingPage menuStartUpClick(){
-        menuStartUp.click();
+    public LandingPage menuStartUpClick() throws InterruptedException {
+        delayAndClick(menuStartUp);
         return this;
     }
 
@@ -188,5 +190,32 @@ public class LandingPage extends BasePage {
         isDisplayed(backgroundColorIcon);
     }
 
+    public LandingPage moveToMentorsHeader() throws InterruptedException {
+        moveTo(mentorsHeader);
+//        js.executeScript("arguments[0].scrollIntoView();", mentorsHeader);
+
+        return this;
+    }
+
+    public LandingPage clickMentorsHeaderPlus() throws InterruptedException {
+        delayAndClick(mentorsHeaderPlus);
+        return this;
+    }
+
+    public LandingPage scrollToTheEnd() throws InterruptedException {
+        Thread.sleep(2000);
+        js.executeScript("arguments[0].scrollIntoView();", aboutUsWhyXLabHeader);
+        Thread.sleep(2000);
+        js.executeScript("arguments[0].scrollIntoView();", projectsHeader);
+        Thread.sleep(2000);
+//        js.executeScript("arguments[0].scrollIntoView();", mentorsHeader);
+//        js.executeScript("arguments[0].scrollIntoView();", startUpHeader);
+//        js.executeScript("arguments[0].scrollIntoView();", logo);
+//        js.executeScript("arguments[0].scrollIntoView();", );
+//        js.executeScript("arguments[0].scrollIntoView();", );
+//        js.executeScript("arguments[0].scrollIntoView();", );
+//        js.executeScript("arguments[0].scrollIntoView();", );
+        return this;
+    }
 
 }
