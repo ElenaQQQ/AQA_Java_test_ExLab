@@ -135,26 +135,6 @@ public class ExLabLandingTests {
     }
 
 
-
-//    @Test
-//    public void menuBackgroundChangeWorksCorrectly(){
-//
-////Check if we have dark theme, then check if it changes to light. If not - vice versa
-//        if (landingPage.getLogo().getAttribute("class").contains("EnPDN")) {
-//            landingPage.getMenuBackgroundChange().click();
-//            Assert.assertTrue(landingPage.getLogo().getAttribute("class").contains("FjAfx"),
-//                    "Test failed: background color not changes");
-//        }
-//        else {
-//            basePage.getMenuBackgroundChange().click();
-//            Assert.assertTrue(landingPage.getLogo().getAttribute("class").contains("EnPDN"),
-//                    "Test failed: background color not changes");
-//        }
-//        System.out.println("________________________\nTEST PASSED: background color changes correctly\n________________________");
-//    }
-//
-//
-//
 //    @Test
 //    public void joinUsButtonOpensCorrectLink() {
 //        landingPage.getJoinButton().click();

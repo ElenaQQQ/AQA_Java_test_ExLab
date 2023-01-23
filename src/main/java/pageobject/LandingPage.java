@@ -6,24 +6,6 @@ import org.testng.Assert;
 
 public class LandingPage extends BasePage {
 
-//    private final By logo = By.id("logo_mobile");
-//    private final By menuAbout = By.xpath("//a[@href='#about']");
-//    private final By menuProjects = By.xpath("//a[@href='#projects']");
-//    private final By menuMentors = By.xpath("//a[@href='#mentors']");
-//    private final By menuStartUp = By.xpath("//a[@href='#startup']");
-//    private final By menuBackgroundChange = By.xpath("//div[contains(@class,'fnykZs')]");
-//    private final By sidePicture = By.xpath("//div[contains(@class,'sc-gsnTZi')]");
-//    private final By joinButton = By.xpath("//div[@class='sc-hAZoDl hrEelO']");
-//    private final By bigLogo = By.xpath("//div[@id='header']//img");
-//    private final By aboutUsHeader = By.xpath("//div[@id='about']/div[1]");
-//    private final By aboutUsText = By.xpath("//div[@id='about']/div/p");
-//    private final By aboutUsWhyXLabHeader = By.xpath("//div[@id='about']/div/div");
-//    private final By aboutUsWhyXLabText = By.xpath("//div[@id='about']/div/ol");
-//    private final By aboutUsWhyXLabJoinButton = By.xpath("//div[@id='about']/div/div/a");
-//    private final By projectsHeader = By.xpath("//div[@id='projects']/div/div[@data-scroll='true']");
-//    private final By mentorsHeader = By.xpath("//div[@id='mentors']/div[1]");
-//    private final By startUpHeader = By.xpath("//div[@id='startup']//div[contains(@data-scroll-target,'#startup')]");
-
     @FindBy(id = "logo_mobile")
     private WebElement logo;
 
@@ -135,7 +117,6 @@ public class LandingPage extends BasePage {
     }
 
     public String takeBackgroungClass(){
-
         return backgroundColorChangeButton.getAttribute("class");
     }
 
@@ -201,7 +182,6 @@ public class LandingPage extends BasePage {
     public LandingPage moveToMentorsHeader() throws InterruptedException {
         moveTo(mentorsHeader);
 //        js.executeScript("arguments[0].scrollIntoView();", mentorsHeader);
-
         return this;
     }
 
@@ -215,8 +195,6 @@ public class LandingPage extends BasePage {
         System.out.println("mentors1Info.isDisplayed() - " + mentors1Foto.isDisplayed());
         return mentors1Foto.isDisplayed();
     }
-
-
 
     public LandingPage scrollToTheEnd() throws InterruptedException {
 //        Thread.sleep(500);
@@ -244,7 +222,6 @@ public class LandingPage extends BasePage {
 
     public void joinButtonIsDisplayed(){
         isDisplayed(joinButton);
-
     }
 
 }
