@@ -1,11 +1,8 @@
 package pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LandingPage extends BasePage {
 
@@ -78,8 +75,14 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='mentors']/div[1]")
     private WebElement mentorsHeader;
 
-    @FindBy (xpath = "")
-    private WebElement mentorsHeaderPlus;
+    @FindBy (xpath = "//div[@id='mentors']//p[contains(text(),'Харлап')]/following-sibling::span")
+    private WebElement mentors1InfoOpen;
+
+    @FindBy (xpath = "//div[@id='mentors']//img[contains(@alt,'Харлап')]") //переписать!
+    private WebElement mentors1Foto;
+
+    @FindBy (xpath = "(//div[@class='sc-bUbCnL fJhsUc'])[1]") //переписать!
+    private WebElement mentors1Info;
 
     @FindBy(xpath = "//div[@id='header']//div[contains(@class,'sc-fnykZs')]")
     private WebElement backgroundColorIcon;
@@ -174,8 +177,9 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public void isMentorsHeaderDisplayed() throws InterruptedException {
+    public LandingPage isMentorsHeaderDisplayed() throws InterruptedException {
         isDisplayed(mentorsHeader);
+        return this;
     }
 
     public void isMenuStartUpDisplayed(){
@@ -202,10 +206,16 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public LandingPage clickMentorsHeaderPlus() throws InterruptedException {
-        delayAndClick(mentorsHeaderPlus);
+    public LandingPage clickMentorsInfoOpen() throws InterruptedException {
+        delayAndClick(mentors1InfoOpen);
         return this;
     }
+
+    public Boolean checkMentorsInfo()  {
+        return mentors1Info.isDisplayed();
+    }
+
+
 
     public LandingPage scrollToTheEnd() throws InterruptedException {
 //        Thread.sleep(500);

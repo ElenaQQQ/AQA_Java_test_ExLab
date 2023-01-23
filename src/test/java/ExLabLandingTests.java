@@ -111,10 +111,17 @@ public class ExLabLandingTests {
         landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed();
     }
 
-//    @Test(description = "Mentors info opens by + click")
-//    public void test_26()  {
-//        new LandingPage().open().menuMentorsClick().isMentorsHeaderDisplayed().clickMentorsHeaderPlus();
-//    }
+    @Test(description = "Mentors info opens by + click")
+    public void test_26() throws InterruptedException {
+        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo();
+        Assert.assertTrue(isMentorsInfoDisplayed);
+    }
+
+    @Test (description = "Mentors info is closed by clicking - click")
+    public void test_29() throws InterruptedException {
+        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo();
+        Assert.assertEquals(isMentorsInfoDisplayed,false); //НЕ РАБОТАЕТ, ТАК КАК IsDisplayed выдает ошибку, не найдя локатор
+    }
 
 
 

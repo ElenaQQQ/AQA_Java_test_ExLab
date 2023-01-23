@@ -84,7 +84,7 @@ public abstract  class BasePage {
     }
 
     public void delayAndClick(WebElement locator) throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         locator.click();
     }
 
