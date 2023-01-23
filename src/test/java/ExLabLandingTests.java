@@ -101,6 +101,14 @@ public class ExLabLandingTests {
         landingPage.open().backgroundColorIconDisplayed();
     }
 
+    @Test (description = "BackgroundColor button changes background color", groups = "Header")
+    public void test_13() throws InterruptedException {
+        String backgroundClassBeforeClick = landingPage.open().takeBackgroungClass();
+        String backgroundClassAfterClick = landingPage.clickBackgroundColorChangeButton().takeBackgroungClass();
+        Assert.assertNotEquals(backgroundClassAfterClick, backgroundClassBeforeClick,
+                "TEST FAILED: BackgroundColor button NOT changes background color");
+    }
+
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
         landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed();

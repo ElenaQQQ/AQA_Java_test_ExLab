@@ -28,7 +28,7 @@ public class LandingPage extends BasePage {
     private WebElement logo;
 
     @FindBy(xpath = "//a[@href='#about']")
-    private WebElement menuAbout;
+    private WebElement menuAboutUs;
 
     @FindBy(xpath = "//a[@href='#projects']")
     private WebElement menuProjects;
@@ -39,8 +39,8 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//a[@href='#startup']")
     private WebElement menuStartUp;
 
-    @FindBy(xpath = "//div[contains(@class,'fnykZs')]")
-    private WebElement menuBackgroundChange;
+    @FindBy(xpath = "//div[@id='header']//div[contains(@class,'sc-fnykZs')]")
+    private WebElement backgroundColorChangeButton;
 
     @FindBy(xpath="//div[contains(@class,'sc-gsnTZi')]")
     private WebElement sidePicture;
@@ -84,8 +84,7 @@ public class LandingPage extends BasePage {
     @FindBy (xpath = "(//div[@class='sc-bUbCnL fJhsUc'])[1]") //переписать!
     private WebElement mentors1Info;
 
-    @FindBy(xpath = "//div[@id='header']//div[contains(@class,'sc-fnykZs')]")
-    private WebElement backgroundColorIcon;
+
 
 
 
@@ -131,22 +130,22 @@ public class LandingPage extends BasePage {
     }
 
     public LandingPage isMenuAboutDisplayed(){
-        isDisplayed(menuAbout);
+        isDisplayed(menuAboutUs);
         return this;
     }
 
     public String takeBackgroungClass(){
 
-        return backgroundColorIcon.getAttribute("class");
+        return backgroundColorChangeButton.getAttribute("class");
     }
 
     public LandingPage menuAboutUsClick(){
-        menuAbout.click();
+        menuAboutUs.click();
         return this;
     }
 
     public LandingPage moveToAboutUsMenu() throws InterruptedException {
-        moveTo(menuAbout);
+        moveTo(menuAboutUs);
         return this;
     }
 
@@ -196,7 +195,7 @@ public class LandingPage extends BasePage {
     }
 
     public void backgroundColorIconDisplayed(){
-        isDisplayed(backgroundColorIcon);
+        isDisplayed(backgroundColorChangeButton);
     }
 
     public LandingPage moveToMentorsHeader() throws InterruptedException {
@@ -229,12 +228,17 @@ public class LandingPage extends BasePage {
 //        Thread.sleep(500);
         js.executeScript("arguments[0].scrollIntoView();", startUpHeader);
 //        Thread.sleep(500);
-        js.executeScript("arguments[0].scrollIntoView();", menuAbout);
+        js.executeScript("arguments[0].scrollIntoView();", menuAboutUs);
 //        Thread.sleep(500);
 //        js.executeScript("arguments[0].scrollIntoView();", );
 //        js.executeScript("arguments[0].scrollIntoView();", );
 //        js.executeScript("arguments[0].scrollIntoView();", );
 //        js.executeScript("arguments[0].scrollIntoView();", );
+        return this;
+    }
+
+    public LandingPage clickBackgroundColorChangeButton() throws InterruptedException {
+        delayAndClick(backgroundColorChangeButton);
         return this;
     }
 
