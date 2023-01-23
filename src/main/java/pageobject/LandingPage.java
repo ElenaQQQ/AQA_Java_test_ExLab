@@ -106,9 +106,8 @@ public class LandingPage extends BasePage {
         return isDisplayed(logo);
     }
 
-    public LandingPage isMenuAboutDisplayed(){
-        isDisplayed(menuAboutUs);
-        return this;
+    public Boolean isMenuAboutDisplayed(){
+        return isDisplayed(menuAboutUs);
     }
 
     public String takeBackgroungClass(){
@@ -125,12 +124,12 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public void isAboutUsHeaderDisplayed()  {
-        isDisplayed(aboutUsHeader);
+    public Boolean isAboutUsHeaderDisplayed()  {
+        return isDisplayed(aboutUsHeader);
     }
 
-    public void isMenuProjectDisplayed(){
-        isDisplayed(menuProjects);
+    public Boolean isMenuProjectDisplayed(){
+        return isDisplayed(menuProjects);
     }
 
     public LandingPage menuProjectsClick() throws InterruptedException {
@@ -138,13 +137,12 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public LandingPage isProjectsHeaderDisplayed(){
-        isDisplayed(projectsHeader);
-        return this;
+    public Boolean isProjectsHeaderDisplayed(){
+        return isDisplayed(projectsHeader);
     }
 
-    public void isMenuMentorsDisplayed(){
-        isDisplayed(menuMentors);
+    public Boolean isMenuMentorsDisplayed(){
+        return isDisplayed(menuMentors);
     }
 
     public LandingPage menuMentorsClick() throws InterruptedException {
@@ -152,13 +150,12 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public LandingPage isMentorsHeaderDisplayed() throws InterruptedException {
-        isDisplayed(mentorsHeader);
-        return this;
+    public Boolean isMentorsHeaderDisplayed() throws InterruptedException {
+        return isDisplayed(mentorsHeader);
     }
 
-    public void isMenuStartUpDisplayed(){
-        isDisplayed(menuStartUp);
+    public Boolean isMenuStartUpDisplayed(){
+        return isDisplayed(menuStartUp);
     }
 
     public LandingPage menuStartUpClick() throws InterruptedException {
@@ -166,12 +163,12 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public void isStartUpHeaderDisplayed(){
-        isDisplayed(startUpHeader);
+    public Boolean isStartUpHeaderDisplayed(){
+        return isDisplayed(startUpHeader);
     }
 
-    public void backgroundColorIconDisplayed(){
-        isDisplayed(backgroundColorChangeButton);
+    public Boolean isBackgroundColorChangeButtonDisplayed(){
+        return isDisplayed(backgroundColorChangeButton);
     }
 
     public LandingPage moveToMentorsHeader() throws InterruptedException {
@@ -215,8 +212,8 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public void joinButtonIsDisplayed(){
-        isDisplayed(joinButton);
+    public Boolean isJoinButtonDisplayed(){
+        return isDisplayed(joinButton);
     }
 
 }

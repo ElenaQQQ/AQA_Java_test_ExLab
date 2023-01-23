@@ -60,7 +60,7 @@ public abstract  class BasePage {
     }
 
     public void delayAndClick(WebElement locator) throws InterruptedException {
-        Thread.sleep(THREAD_SLEEP_WAIT);
+        Thread.sleep(THREAD_SLEEP_WAIT); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
         locator.click();
     }
 

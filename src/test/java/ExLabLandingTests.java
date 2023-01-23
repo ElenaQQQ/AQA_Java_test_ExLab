@@ -39,69 +39,63 @@ public class ExLabLandingTests {
 
     @Test (description = "Page opens with dark background", groups = "Header")
     public void test_2() {
-        String backgroundClassAtStart = landingPage.open().takeBackgroungClass();
-        Assert.assertTrue(backgroundClassAtStart.contains("fEkGUM"),
+        Assert.assertTrue(landingPage.open().takeBackgroungClass().contains("fEkGUM"),
                 "TEST FAILED: Page not opens with dark background");
     }
 
     @Test (description = "ExLab logo is displayed", groups = "Header")
     public void test_3() {
-        landingPage.open().isLogoDisplayed();
+        Assert.assertTrue(landingPage.open().isLogoDisplayed());
     }
 
     @Test (description = "Menu item About us is displayed", groups = "Header")
     public void test4(){
-        landingPage.open().isMenuAboutDisplayed();
-    }
-
-    @Test (description = "Menu item About us is displayed", groups = "Header")
-    public void test4_1() throws InterruptedException {
-        landingPage.open().scrollToTheEnd().moveToAboutUsMenu().isMenuAboutDisplayed();
+        Assert.assertTrue(landingPage.open().isMenuAboutDisplayed());
     }
 
     @Test (description = "About us menu link opens About us module", groups = "Header")
     public void test_5 ()  {
-        landingPage.open().menuAboutUsClick().isAboutUsHeaderDisplayed();
+        Assert.assertTrue(landingPage.open().menuAboutUsClick().isAboutUsHeaderDisplayed());
     }
 
     @Test (description = "Menu item Projects is displayed", groups = "Header")
     public void test_6(){
-        landingPage.open().isMenuProjectDisplayed();
+        Assert.assertTrue(landingPage.open().isMenuProjectDisplayed());
     }
 
     @Test (description = "Menu item Projects opens Projects module", groups = "Header")
     public void test_7() throws InterruptedException {
-        landingPage.open().menuProjectsClick().isProjectsHeaderDisplayed();
+        Assert.assertTrue(landingPage.open().menuProjectsClick().isProjectsHeaderDisplayed());
     }
 
     @Test (description = "Menu item Mentors is displayed", groups = "Header")
     public void test_8() {
-        landingPage.open().isMenuMentorsDisplayed();
+        Assert.assertTrue(landingPage.open().isMenuMentorsDisplayed());
     }
 
     @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
     public void test_9() throws InterruptedException {
-        landingPage.open().menuMentorsClick().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+        Assert.assertTrue(landingPage.open().menuMentorsClick().isMentorsHeaderDisplayed());
     }
 
     @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
     public void test_9_1() throws InterruptedException {
-        landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+        Assert.assertTrue(landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
     }
 
     @Test (description = "Menu item StartUp is displayed", groups = "Header")
     public void test_10(){
-        landingPage.open().isMenuStartUpDisplayed();
+        Assert.assertTrue(landingPage.open().isMenuStartUpDisplayed());
     }
 
     @Test (description = "Menu item StartUp opens Start up module", groups = "Header")
     public void test_11() throws InterruptedException {
-        landingPage.open().menuStartUpClick().isStartUpHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+        Assert.assertTrue(landingPage.open().menuStartUpClick().isStartUpHeaderDisplayed());
     }
 
     @Test (description = "BackgroundColor Icon is displayed", groups = "Header")
     public void test_12(){
-        landingPage.open().backgroundColorIconDisplayed();
+        Assert.assertTrue(landingPage.open().isBackgroundColorChangeButtonDisplayed());
     }
 
     @Test (description = "BackgroundColor button changes background color", groups = "Header")
@@ -114,27 +108,24 @@ public class ExLabLandingTests {
 
     @Test (description = "Join button is displayed", groups = "Header")
     public void test_14(){
-        landingPage.open().joinButtonIsDisplayed();
-//        Assert.assertTrue(landingPage.open().joinButtonIsDisplayed(),
-//                "TEST FAIL: Join button is NOT displayed");
+        Assert.assertTrue(landingPage.open().isJoinButtonDisplayed(),
+                "TEST FAIL: Join button is NOT displayed");
     }
 
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
-        landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed();
+        Assert.assertTrue(landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
     }
 
     @Test(description = "Mentors info opens by + click")
     public void test_26() throws InterruptedException {
-        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo();
-        Assert.assertTrue(isMentorsInfoDisplayed);
+        Assert.assertTrue(landingPage.open().menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
     @Test (description = "Mentors info is closed by clicking - click")
     public void test_29() throws InterruptedException {
-        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().
-                clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo();
-        Assert.assertFalse(isMentorsInfoDisplayed);
+        Assert.assertFalse(landingPage.open().menuMentorsClick().
+                clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
 
