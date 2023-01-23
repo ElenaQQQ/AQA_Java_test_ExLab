@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobject.LandingPage;
 
+import static Utils.Config.*;
 import static driver.driver.createDriver;
 import static driver.driver.quite;
 
@@ -23,10 +24,12 @@ public class ExLabLandingTests {
 
     @Test (description = "ExLab landing is available by URL", groups = "Header")
     public void test_1() {
-
-        landingPage.open().ifUrlExLabMatches();
-        landingPage.ifTitleExLabMatches();
-        landingPage.ifLogoDisplayed();
+        Assert.assertEquals(landingPage.open().getUrl(),BASE_URL,
+                "TEST FAIL: Url not matches");
+        Assert.assertEquals(landingPage.open().getTitle(),"ExLab Landing",
+                "TEST FAIL: Title not matches");
+        Assert.assertTrue(landingPage.open().isLogoDisplayed(),
+                "TEST FAIL: Logo is not displayed");
 
         System.out.println("TEST PASSED: website is opened:\n" +
                 "- URL is matches\n" +
@@ -43,7 +46,7 @@ public class ExLabLandingTests {
 
     @Test (description = "ExLab logo is displayed", groups = "Header")
     public void test_3() {
-        landingPage.open().ifLogoDisplayed();
+        landingPage.open().isLogoDisplayed();
     }
 
     @Test (description = "Menu item About us is displayed", groups = "Header")

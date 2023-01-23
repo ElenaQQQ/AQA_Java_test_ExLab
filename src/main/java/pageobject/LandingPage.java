@@ -96,19 +96,14 @@ public class LandingPage extends BasePage {
     public LandingPage open(){
         loadPage();
         return this;
-}
-
-    public void ifUrlExLabMatches(){
-        Assert.assertEquals("http://test.exlab.team/", getUrl(),
-                "TEST FAILED: Url is not the same");
     }
 
     public void ifTitleExLabMatches(){
         Assert.assertEquals(getTitle(),"ExLab Landing", "TEST FAILED: title is not the same");
     }
 
-    public void ifLogoDisplayed(){
-        isDisplayed(logo);
+    public Boolean isLogoDisplayed(){
+        return isDisplayed(logo);
     }
 
     public LandingPage isMenuAboutDisplayed(){
