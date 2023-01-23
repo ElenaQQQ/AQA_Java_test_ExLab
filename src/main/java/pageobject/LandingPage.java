@@ -221,4 +221,9 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public LandingPage moveToAboutUsHeader() throws InterruptedException {
+        moveTo(aboutUsHeader);
+        return this;
+    }
+
 }

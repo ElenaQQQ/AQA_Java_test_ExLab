@@ -119,6 +119,12 @@ public class ExLabLandingTests {
                 "TEST FAIL: Join button NOT opens telegram inviting page");
     }
 
+    @Test (description = "About Us header is displayed")
+    public void test_16() throws InterruptedException {
+
+        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsHeaderDisplayed());
+    }
+
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
         Assert.assertTrue(landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
