@@ -14,6 +14,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 //import static driver.driver.actions;
+import static Utils.Config.*;
 import static driver.driver.getDriver;
 public abstract  class BasePage {
 
@@ -22,7 +23,7 @@ public abstract  class BasePage {
     protected Actions actions;
 
 
-    protected String baseUrl = "http://test.exlab.team/";
+//    protected String baseUrl = "http://test.exlab.team/";
 
     public BasePage() {
         driver = getDriver();
@@ -30,12 +31,9 @@ public abstract  class BasePage {
         actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         js = (JavascriptExecutor) getDriver();
-
-
-
     }
 
-    public void loadPage () {      driver.get(baseUrl);    }
+    public void loadPage () {      driver.get(BASE_URL);    }
 
     public String getTitle() {
         return driver.getTitle();
@@ -69,7 +67,7 @@ public abstract  class BasePage {
 
     protected void moveTo(WebElement webElement) throws InterruptedException {
 //        Assert.assertNotNull(actions, "actions is null");
-//        Thread.sleep(500);
+        Thread.sleep(THREAD_SLEEP_WAIT);
         actions.scrollToElement(webElement).build().perform();
 
 //        js.executeScript("arguments[0].scrollIntoView();", locator);
@@ -77,14 +75,14 @@ public abstract  class BasePage {
 
     protected void moveTo(By locator) throws InterruptedException {
 //        Assert.assertNotNull(actions, "actions is null");
-        Thread.sleep(200);
+        Thread.sleep(THREAD_SLEEP_WAIT);
         actions.scrollToElement(driver.findElement(locator)).build().perform();
 
 //        js.executeScript("arguments[0].scrollIntoView();", locator);
     }
 
     public void delayAndClick(WebElement locator) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(THREAD_SLEEP_WAIT);
         locator.click();
     }
 

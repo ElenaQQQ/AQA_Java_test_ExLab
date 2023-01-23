@@ -96,11 +96,6 @@ public class ExLabLandingTests {
         landingPage.open().menuStartUpClick().isStartUpHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
     }
 
-//    @Test
-//    public void test_scrollToTheEnd() throws InterruptedException {
-//        landingPage.open().menuAboutUsClick().scrollToTheEnd().ifLogoDisplayed();
-//    }
-
     @Test (description = "BackgroundColor Icon is displayed", groups = "Header")
     public void test_12(){
         landingPage.open().backgroundColorIconDisplayed();
@@ -119,8 +114,9 @@ public class ExLabLandingTests {
 
     @Test (description = "Mentors info is closed by clicking - click")
     public void test_29() throws InterruptedException {
-        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo();
-        Assert.assertEquals(isMentorsInfoDisplayed,false); //НЕ РАБОТАЕТ, ТАК КАК IsDisplayed выдает ошибку, не найдя локатор
+        Boolean isMentorsInfoDisplayed = landingPage.open().menuMentorsClick().
+                clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo();
+        Assert.assertFalse(isMentorsInfoDisplayed);
     }
 
 

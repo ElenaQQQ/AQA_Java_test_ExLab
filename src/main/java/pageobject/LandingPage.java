@@ -211,8 +211,10 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public Boolean checkMentorsInfo()  {
-        return mentors1Info.isDisplayed();
+    public Boolean checkMentorsInfo() throws InterruptedException {
+        Thread.sleep(1500);
+        System.out.println("mentors1Info.isDisplayed() - " + mentors1Foto.isDisplayed());
+        return mentors1Foto.isDisplayed();
     }
 
 
