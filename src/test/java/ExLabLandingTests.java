@@ -121,9 +121,37 @@ public class ExLabLandingTests {
 
     @Test (description = "About Us header is displayed")
     public void test_16() throws InterruptedException {
-
         Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsHeaderDisplayed());
     }
+
+    @Test (description = "About Us text is displayed")
+    public void test_17() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsTextDisplayed());
+    }
+
+    @Test (description = "Why ExLab subheader is displayed")
+    public void test_18() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabSubheaderDisplayed());
+    }
+
+    @Test (description = "Why ExLab text is displayed")
+    public void test_19() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabTextDisplayed());
+    }
+
+    @Test (description = "Join button is displayed")
+    public void test_20() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabJoinButtonDisplayed());
+    }
+
+    @Test (description = "Join button opens telegram inviting page")
+    public void test_21() throws InterruptedException {
+        landingPage.open().moveToAboutUsJoinButton().whyExLabJoinButtonClick().changeToNewTab();
+        Assert.assertEquals(landingPage.getUrl(),"https://t.me/ExLab_registration_bot",
+                "TEST FAIL: Join button NOT opens telegram inviting page");
+    }
+
+
 
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {

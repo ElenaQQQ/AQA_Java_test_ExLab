@@ -226,4 +226,29 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public Boolean isAboutUsTextDisplayed(){
+        return isDisplayed(aboutUsText);
+    }
+
+    public Boolean isAboutUsWhyExLabSubheaderDisplayed(){
+        return isDisplayed(aboutUsWhyXLabHeader);
+    }
+
+    public Boolean isAboutUsWhyExLabTextDisplayed(){
+        return isDisplayed(aboutUsWhyXLabText);
+    }
+
+    public Boolean isAboutUsWhyExLabJoinButtonDisplayed(){
+        return isDisplayed(aboutUsWhyXLabJoinButton);
+    }
+
+    public LandingPage moveToAboutUsJoinButton() throws InterruptedException {
+        moveTo(aboutUsWhyXLabJoinButton);
+        return this;
+    }
+    public LandingPage whyExLabJoinButtonClick() throws InterruptedException {
+        delayAndClick(aboutUsWhyXLabJoinButton);
+        return this;
+    }
+
 }
