@@ -150,7 +150,7 @@ public class LandingPage extends BasePage {
         return this;
     }
 
-    public Boolean isMentorsHeaderDisplayed() throws InterruptedException {
+    public Boolean isMentorsHeaderDisplayed()  {
         return isDisplayed(mentorsHeader);
     }
 
@@ -188,7 +188,7 @@ public class LandingPage extends BasePage {
         return mentors1Foto.isDisplayed();
     }
 
-    public LandingPage scrollToTheEnd() throws InterruptedException {
+    public LandingPage scrollToTheEnd()  {
 //        Thread.sleep(500);
         js.executeScript("arguments[0].scrollIntoView();", aboutUsWhyXLabHeader);
 //        Thread.sleep(500);
@@ -214,6 +214,11 @@ public class LandingPage extends BasePage {
 
     public Boolean isJoinButtonDisplayed(){
         return isDisplayed(joinButton);
+    }
+
+    public LandingPage joinButtonClick() throws InterruptedException {
+        delayAndClick(joinButton);
+        return this;
     }
 
 }

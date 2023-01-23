@@ -112,6 +112,13 @@ public class ExLabLandingTests {
                 "TEST FAIL: Join button is NOT displayed");
     }
 
+    @Test (description = "Join button opens telegram inviting page", groups = "Header")
+    public void test_15() throws InterruptedException {
+        landingPage.open().joinButtonClick().changeToNewTab();
+        Assert.assertEquals(landingPage.getUrl(),"https://t.me/ExLab_registration_bot",
+                "TEST FAIL: Join button NOT opens telegram inviting page");
+    }
+
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
         Assert.assertTrue(landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
@@ -127,14 +134,4 @@ public class ExLabLandingTests {
         Assert.assertFalse(landingPage.open().menuMentorsClick().
                 clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo());
     }
-
-
-//    @Test
-//    public void joinUsButtonOpensCorrectLink() {
-//        landingPage.getJoinButton().click();
-//        landingPage.changeToNewTab();
-//        Assert.assertEquals(landingPage.getUrl(), "https://t.me/ExLab_registration_bot",
-//                "TEST FAILED: Url is not that expected");
-//        System.out.println("________________________\nTEST PASSED: joinUs button opens expected URL\n________________________");
-//    }
 }
