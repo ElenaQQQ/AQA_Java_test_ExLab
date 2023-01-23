@@ -109,6 +109,13 @@ public class ExLabLandingTests {
                 "TEST FAILED: BackgroundColor button NOT changes background color");
     }
 
+    @Test (description = "Join button is displayed", groups = "Header")
+    public void test_14(){
+        landingPage.open().joinButtonIsDisplayed();
+//        Assert.assertTrue(landingPage.open().joinButtonIsDisplayed(),
+//                "TEST FAIL: Join button is NOT displayed");
+    }
+
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
         landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed();

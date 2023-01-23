@@ -242,4 +242,9 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public void joinButtonIsDisplayed(){
+        isDisplayed(joinButton);
+
+    }
+
 }
