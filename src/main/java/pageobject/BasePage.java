@@ -29,6 +29,10 @@ public abstract  class BasePage {
         PageFactory.initElements(driver,this);
         actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        js = (JavascriptExecutor) getDriver();
+
+
+
     }
 
     public void loadPage () {      driver.get(baseUrl);    }
@@ -65,7 +69,7 @@ public abstract  class BasePage {
 
     protected void moveTo(WebElement webElement) throws InterruptedException {
 //        Assert.assertNotNull(actions, "actions is null");
-        Thread.sleep(200);
+//        Thread.sleep(500);
         actions.scrollToElement(webElement).build().perform();
 
 //        js.executeScript("arguments[0].scrollIntoView();", locator);
@@ -80,7 +84,7 @@ public abstract  class BasePage {
     }
 
     public void delayAndClick(WebElement locator) throws InterruptedException {
-        Thread.sleep(200);
+        Thread.sleep(500);
         locator.click();
     }
 

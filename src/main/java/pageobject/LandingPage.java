@@ -142,6 +142,11 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public LandingPage moveToAboutUsMenu() throws InterruptedException {
+        moveTo(menuAbout);
+        return this;
+    }
+
     public void isAboutUsHeaderDisplayed()  {
         isDisplayed(aboutUsHeader);
     }
@@ -203,14 +208,17 @@ public class LandingPage extends BasePage {
     }
 
     public LandingPage scrollToTheEnd() throws InterruptedException {
-        Thread.sleep(2000);
+//        Thread.sleep(500);
         js.executeScript("arguments[0].scrollIntoView();", aboutUsWhyXLabHeader);
-        Thread.sleep(2000);
+//        Thread.sleep(500);
         js.executeScript("arguments[0].scrollIntoView();", projectsHeader);
-        Thread.sleep(2000);
-//        js.executeScript("arguments[0].scrollIntoView();", mentorsHeader);
-//        js.executeScript("arguments[0].scrollIntoView();", startUpHeader);
-//        js.executeScript("arguments[0].scrollIntoView();", logo);
+//        Thread.sleep(500);
+        js.executeScript("arguments[0].scrollIntoView();", mentorsHeader);
+//        Thread.sleep(500);
+        js.executeScript("arguments[0].scrollIntoView();", startUpHeader);
+//        Thread.sleep(500);
+        js.executeScript("arguments[0].scrollIntoView();", menuAbout);
+//        Thread.sleep(500);
 //        js.executeScript("arguments[0].scrollIntoView();", );
 //        js.executeScript("arguments[0].scrollIntoView();", );
 //        js.executeScript("arguments[0].scrollIntoView();", );

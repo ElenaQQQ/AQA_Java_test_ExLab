@@ -43,62 +43,72 @@ public class ExLabLandingTests {
 
     @Test (description = "ExLab logo is displayed", groups = "Header")
     public void test_3() {
-        new LandingPage().open().ifLogoDisplayed();
+        landingPage.open().ifLogoDisplayed();
     }
 
     @Test (description = "Menu item About us is displayed", groups = "Header")
     public void test4(){
-        new LandingPage().open().isMenuAboutDisplayed();
+        landingPage.open().isMenuAboutDisplayed();
+    }
+
+    @Test (description = "Menu item About us is displayed", groups = "Header")
+    public void test4_1() throws InterruptedException {
+        landingPage.open().scrollToTheEnd().moveToAboutUsMenu().isMenuAboutDisplayed();
     }
 
     @Test (description = "About us menu link opens About us module", groups = "Header")
     public void test_5 ()  {
-        new LandingPage().open().menuAboutUsClick().isAboutUsHeaderDisplayed();
+        landingPage.open().menuAboutUsClick().isAboutUsHeaderDisplayed();
     }
 
     @Test (description = "Menu item Projects is displayed", groups = "Header")
     public void test_6(){
-        new LandingPage().open().isMenuProjectDisplayed();
+        landingPage.open().isMenuProjectDisplayed();
     }
 
     @Test (description = "Menu item Projects opens Projects module", groups = "Header")
     public void test_7() throws InterruptedException {
-        new LandingPage().open().menuProjectsClick().isProjectsHeaderDisplayed();
+        landingPage.open().menuProjectsClick().isProjectsHeaderDisplayed();
     }
 
     @Test (description = "Menu item Mentors is displayed", groups = "Header")
     public void test_8() {
-        new LandingPage().open().isMenuMentorsDisplayed();
+        landingPage.open().isMenuMentorsDisplayed();
     }
 
     @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
     public void test_9() throws InterruptedException {
-        new LandingPage().open().menuMentorsClick().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+        landingPage.open().menuMentorsClick().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+    }
+
+    @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
+    public void test_9_1() throws InterruptedException {
+        landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
     }
 
     @Test (description = "Menu item StartUp is displayed", groups = "Header")
     public void test_10(){
-        new LandingPage().open().isMenuStartUpDisplayed();
+        landingPage.open().isMenuStartUpDisplayed();
     }
 
     @Test (description = "Menu item StartUp opens Start up module", groups = "Header")
     public void test_11() throws InterruptedException {
-        new LandingPage().open().menuStartUpClick().isStartUpHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
+        landingPage.open().menuStartUpClick().isStartUpHeaderDisplayed(); //клик делается с задержкой, так как прогрузка страницы идет по блокам и некорректно
     }
 
 //    @Test
-//    public void test_scrollToTheEndAndBack() throws InterruptedException {
-//        new LandingPage().open().menuAboutUsClick().scrollToTheEnd().isProjectsHeaderDisplayed();
+//    public void test_scrollToTheEnd() throws InterruptedException {
+//        landingPage.open().menuAboutUsClick().scrollToTheEnd().ifLogoDisplayed();
 //    }
 
     @Test (description = "BackgroundColor Icon is displayed", groups = "Header")
     public void test_12(){
-        new LandingPage().open().backgroundColorIconDisplayed();
+        landingPage.open().backgroundColorIconDisplayed();
     }
 
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
-        new LandingPage().open().moveToMentorsHeader().isMentorsHeaderDisplayed();
+        landingPage.open().scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed();
     }
 
 //    @Test(description = "Mentors info opens by + click")
