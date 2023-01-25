@@ -1,10 +1,15 @@
 package pageobject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class LandingPage extends BasePage {
+
+    //HEADER
 
     @FindBy(id = "logo_mobile")
     private WebElement logo;
@@ -30,10 +35,12 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@class='sc-hAZoDl hrEelO']")
     private WebElement joinButton;
 
+    // BIG LOGO, ABOUT US MODULE
+
     @FindBy(xpath = "//div[@id='header']//img")
     private WebElement bigLogo;
 
-    @FindBy(xpath = "//div[@id='about']/div[1]")
+    @FindBy(xpath = "//div[@id='about']/div[2]")
     private WebElement aboutUsHeader;
 
     @FindBy(xpath = "//div[@id='about']/div/p")
@@ -48,14 +55,20 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='about']/div/div/a")
     private WebElement aboutUsWhyXLabJoinButton;
 
+    // PROJECTS MODULE
+
     @FindBy(xpath = "//div[@id='projects']/div/div[contains(@data-scroll-target,'#projects')]")
     private WebElement projectsHeader;
 
     @FindBy(xpath = "//div[@id=\"startup\"]/div/div[contains(@data-scroll-target,'#startup')]")
     private WebElement startUpHeader;
 
-    @FindBy(xpath = "//div[@id='mentors']/div[1]")
+    // MENTORS MODULE
+
+    @FindBy(xpath = "//div[@id='mentors']/div[2]")
     private WebElement mentorsHeader;
+
+    private By mentorsBlock = By.xpath("//div[@id='mentors']/div/div/div");
 
     @FindBy (xpath = "//div[@id='mentors']//p[contains(text(),'Харлап')]/following-sibling::span")
     private WebElement mentors1InfoOpen;
@@ -66,32 +79,33 @@ public class LandingPage extends BasePage {
     @FindBy (xpath = "(//div[@class='sc-bUbCnL fJhsUc'])[1]") //переписать!
     private WebElement mentors1Info;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]")
+    private WebElement projectXLabHeader;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]/following-sibling::img")
+    private WebElement projectXLabLogo;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]/following-sibling::p")
+    private WebElement projectXLabText;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Healthy life')]")
+    private WebElement projectHealthylifeHeader;
 
-    //    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]")
-//    private WebElement projectsXLabHeader;
-//
-//    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]/following-sibling::img")
-//    private WebElement projectsXLabLogo;
-//
-//    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]/following-sibling::p")
-//    private WebElement projectsXLabText;
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Healthy life')]/following-sibling::img")
+    private WebElement projectHealthylifeLogo;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Healthy life')]/following-sibling::p")
+    private WebElement projectHealthylifeText;
 
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Easyhelp')]")
+    private WebElement projectEasyhelpHeader;
 
-//    private WebElement getProjectHeader (String projectName) {
-//        return driver.findElement(By.xpath("//div[@id='projects']//h2[contains(text()," + projectName + ")]"));
-//    }
-//
-//    private WebElement getProjectLogo (String projectName) {
-//        return driver.findElement(By.xpath(getProjectHeader(projectName) + "/following-sibling::img"));
-//    }
-//
-//    private WebElement getProjectText (String projectName) {
-//        return driver.findElement(By.xpath(getProjectHeader(projectName) + "/following-sibling::p"));
-//    }
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Easyhelp')]/following-sibling::img")
+    private WebElement projectEasyhelpLogo;
+
+    @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Easyhelp')]/following-sibling::p")
+    private WebElement projectEasyhelpText;
+
 
     public LandingPage open(){
         loadPage();
@@ -251,4 +265,61 @@ public class LandingPage extends BasePage {
         return this;
     }
 
+    public LandingPage moveToProjectsHeader() throws InterruptedException {
+        moveTo(projectsHeader);
+        return this;
+    }
+
+    public Boolean isExLabLogoDisplayed(){
+        return isDisplayed(projectXLabLogo);
+    }
+
+    public Boolean isExLabTextDisplayed(){
+        return isDisplayed(projectXLabText);
+    }
+
+    public Boolean isEasyhelpLogoDisplayed(){
+        return isDisplayed(projectEasyhelpLogo);
+    }
+
+    public Boolean isEasyhelpTextDisplayed(){
+        return isDisplayed(projectEasyhelpText);
+    }
+
+    public Boolean isHealthylifeLogoDisplayed(){
+        return isDisplayed(projectHealthylifeLogo);
+    }
+
+    public Boolean isHealthylifeTextDisplayed(){
+        return isDisplayed(projectHealthylifeText);
+    }
+
+    public LandingPage moveToExLabProject() throws InterruptedException {
+        moveTo(projectXLabText);
+        return this;
+    }
+
+    public LandingPage moveToHealthyLifeProject() throws InterruptedException {
+        moveTo(projectHealthylifeText);
+        return this;
+    }
+
+    public LandingPage moveToEasyHelpProject() throws InterruptedException {
+        moveTo(projectEasyhelpText);
+        return this;
+    }
+
+    public Boolean isMentorsFotoDisplayed(){
+        return isDisplayed(mentors1Foto);
+    }
+
+    public Integer countMentors(){
+        List<WebElement> list = driver.findElements(mentorsBlock);
+        return list.size();
+    }
+
+    public LandingPage moveToWhyExLabBlock() throws InterruptedException {
+        moveTo(aboutUsWhyXLabJoinButton);
+        return this;
+    }
 }

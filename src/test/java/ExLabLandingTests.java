@@ -131,17 +131,17 @@ public class ExLabLandingTests {
 
     @Test (description = "Why ExLab subheader is displayed")
     public void test_18() throws InterruptedException {
-        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabSubheaderDisplayed());
+        Assert.assertTrue(landingPage.open().moveToWhyExLabBlock().isAboutUsWhyExLabSubheaderDisplayed());
     }
 
     @Test (description = "Why ExLab text is displayed")
     public void test_19() throws InterruptedException {
-        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabTextDisplayed());
+        Assert.assertTrue(landingPage.open().moveToWhyExLabBlock().isAboutUsWhyExLabTextDisplayed());
     }
 
     @Test (description = "Join button is displayed")
     public void test_20() throws InterruptedException {
-        Assert.assertTrue(landingPage.open().moveToAboutUsHeader().isAboutUsWhyExLabJoinButtonDisplayed());
+        Assert.assertTrue(landingPage.open().moveToWhyExLabBlock().isAboutUsWhyExLabJoinButtonDisplayed());
     }
 
     @Test (description = "Join button opens telegram inviting page")
@@ -151,7 +151,40 @@ public class ExLabLandingTests {
                 "TEST FAIL: Join button NOT opens telegram inviting page");
     }
 
+    @Test (description = "Projects header is displayed")
+    public void test_22() throws InterruptedException{
+        Assert.assertTrue(landingPage.open().moveToProjectsHeader().isProjectsHeaderDisplayed());
+    }
 
+    @Test (description = "ExLab logo is displayed at Projects module")
+    public void test_23_1() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToExLabProject().isExLabLogoDisplayed());
+    }
+
+    @Test (description = "HealthyLife logo is displayed at Projects module")
+    public void test_23_2() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToHealthyLifeProject().isHealthylifeLogoDisplayed());
+    }
+
+    @Test (description = "Easyhelp logo is displayed at Projects module")
+    public void test_23_3() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToEasyHelpProject().isEasyhelpLogoDisplayed());
+    }
+
+    @Test (description = "ExLab text is displayed at Projects module")
+    public void test_24_1() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToExLabProject().isExLabTextDisplayed());
+    }
+
+    @Test (description = "HealthyLife text is displayed at Projects module")
+    public void test_24_2() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToHealthyLifeProject().isHealthylifeTextDisplayed());
+    }
+
+    @Test (description = "Easyhelp text is displayed at Projects module")
+    public void test_24_3() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToEasyHelpProject().isEasyhelpTextDisplayed());
+    }
 
     @Test(description = "Mentors header is displayed", groups = "Mentors")
     public void test_25() throws InterruptedException {
@@ -163,9 +196,21 @@ public class ExLabLandingTests {
         Assert.assertTrue(landingPage.open().menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
+    @Test (description = "Mentors foto is displayed")
+    public void test_27() throws InterruptedException {
+        Assert.assertTrue(landingPage.open().moveToMentorsHeader().clickMentorsInfoOpen().isMentorsFotoDisplayed());
+    }
+
+    @Test (description = "Info about 4 mentors is displayed")
+    public void test_28() throws InterruptedException {
+        Assert.assertEquals(landingPage.open().moveToMentorsHeader().countMentors(),4);
+    }
+
     @Test (description = "Mentors info is closed by clicking - click")
     public void test_29() throws InterruptedException {
         Assert.assertFalse(landingPage.open().menuMentorsClick().
                 clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo());
     }
+
+//    @Test (description = "")
 }
