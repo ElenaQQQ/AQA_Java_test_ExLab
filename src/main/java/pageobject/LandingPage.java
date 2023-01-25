@@ -60,25 +60,6 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='projects']/div/div[contains(@data-scroll-target,'#projects')]")
     private WebElement projectsHeader;
 
-    @FindBy(xpath = "//div[@id=\"startup\"]/div/div[contains(@data-scroll-target,'#startup')]")
-    private WebElement startUpHeader;
-
-    // MENTORS MODULE
-
-    @FindBy(xpath = "//div[@id='mentors']/div[2]")
-    private WebElement mentorsHeader;
-
-    private By mentorsBlock = By.xpath("//div[@id='mentors']/div/div/div");
-
-    @FindBy (xpath = "//div[@id='mentors']//p[contains(text(),'Харлап')]/following-sibling::span")
-    private WebElement mentors1InfoOpen;
-
-    @FindBy (xpath = "//div[@id='mentors']//img[contains(@alt,'Харлап')]") //переписать!
-    private WebElement mentors1Foto;
-
-    @FindBy (xpath = "(//div[@class='sc-bUbCnL fJhsUc'])[1]") //переписать!
-    private WebElement mentors1Info;
-
     @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'ExLab')]")
     private WebElement projectXLabHeader;
 
@@ -105,6 +86,60 @@ public class LandingPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='projects']//h2[contains(text(),'Easyhelp')]/following-sibling::p")
     private WebElement projectEasyhelpText;
+
+    // MENTORS MODULE
+
+    @FindBy(xpath = "//div[@id='mentors']/div[2]")
+    private WebElement mentorsHeader;
+
+    private final By mentorsBlock = By.xpath("//div[@id='mentors']/div/div/div");
+
+    @FindBy (xpath = "(//div[@id='mentors']//div/p/following-sibling::span)[1]")
+    private WebElement mentors1InfoOpen;
+
+    @FindBy (xpath = "(//div[@id='mentors']//img)[1]")
+    private WebElement mentors1Foto;
+
+    @FindBy (xpath = "((//div[@id='mentors']//ul)[1]")
+    private WebElement mentors1Info;
+
+    @FindBy (xpath = "//div[@id='mentors']//a[contains(text(),'Стать')]")
+    private WebElement mentorsBecameButton;
+
+    // START-UP MODULE
+
+    @FindBy(xpath = "//div[@id=\"startup\"]/div/div[contains(@data-scroll-target,'#startup')]")
+    private WebElement startUpHeader;
+
+    @FindBy(xpath = "//div[@id='startup']/div/div/p")
+    private WebElement startUpText;
+
+    @FindBy (xpath = "//div[@id='startup']//a[contains(text(),'Найти')]")
+    private WebElement startUpFindButton;
+
+    // HELP PROJECT HEADER
+
+    @FindBy (xpath = "//div[(contains(text(),'Помочь'))]")
+    private WebElement helpProjectHeader;
+
+    @FindBy (xpath = "//div[(contains(text(),'Помочь'))]/following-sibling::div//div[contains(text(),' ')][1]")
+    private WebElement helpProjectText;
+
+    @FindBy (xpath = "//div[(contains(text(),'Помочь'))]/following-sibling::div//a[contains(text(),'Boosty')]")
+    private WebElement helpProjectBoostyButton;
+
+    @FindBy (xpath = "//div[(contains(text(),'Помочь'))]/following-sibling::div//a[contains(text(),'Patreon')]")
+    private WebElement helpProjectPatreonButton;
+
+    @FindBy (xpath = "//div[(contains(text(),'Оставайся'))]")
+    private WebElement stayInContactHeader;
+
+    @FindBy (xpath = "//div[(contains(text(),'Оставайся'))]/following-sibling::div")
+    private WebElement stayInContactText;
+
+    // FOOTER
+
+
 
 
     public LandingPage open(){
