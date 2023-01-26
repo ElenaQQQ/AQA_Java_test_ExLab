@@ -134,10 +134,10 @@ public class LandingPage extends BasePage {
     private WebElement helpProjectPatreonButton;
 
     @FindBy (xpath = "//div[(contains(text(),'Оставайся'))]")
-    private WebElement stayInContactHeader;
+    private WebElement stayConnectedHeader;
 
     @FindBy (xpath = "//div[(contains(text(),'Оставайся'))]/following-sibling::div")
-    private WebElement stayInContactText;
+    private WebElement stayConnectedText;
 
     // FOOTER
 
@@ -359,4 +359,66 @@ public class LandingPage extends BasePage {
         moveTo(aboutUsWhyXLabJoinButton);
         return this;
     }
+
+    public LandingPage moveToStartUpBlock() throws InterruptedException {
+        moveTo(startUpText);
+        return this;
+    }
+
+    public Boolean isBecameMentorButtonDisplayed(){
+        return isDisplayed(mentorsBecameButton);
+    }
+
+    public Boolean isStartUpTextDisplayed(){
+        return isDisplayed(startUpText);
+    }
+
+    public LandingPage moveToStartUpButton() throws InterruptedException {
+        moveTo(startUpFindButton);
+        return this;
+    }
+
+    public Boolean isStartUpButtonDisplayed(){
+        return isDisplayed(startUpFindButton);
+    }
+
+    public LandingPage moveToHelpProjectBlock() throws InterruptedException {
+        moveTo(helpProjectBoostyButton);
+        return this;
+    }
+
+    public Boolean isHelpProjectHeaderDisplayed(){
+        return isDisplayed(helpProjectHeader);
+    }
+
+    public Boolean isHelpProjectTextDisplayed(){
+        return isDisplayed(helpProjectText);
+    }
+
+    public Boolean isHelpProjectBoostyButtonDisplayed(){
+        return isDisplayed(helpProjectBoostyButton);
+    }
+
+    public Boolean isHelpProjectPatreonButtonDisplayed(){
+        return isDisplayed(helpProjectPatreonButton);
+    }
+
+    public LandingPage clickBoostyButton() throws InterruptedException {
+        delayAndClick(helpProjectBoostyButton);
+        return this;
+    }
+
+    public LandingPage moveToStayConnectedModule() throws InterruptedException{
+        moveTo(stayConnectedText);
+        return this;
+    }
+
+    public Boolean isStayConnectedHeaderDisplayed(){
+        return isDisplayed(stayConnectedHeader);
+    }
+
+    public Boolean isStayConnectedTextDisplayed(){
+        return isDisplayed(stayConnectedText);
+    }
+
 }

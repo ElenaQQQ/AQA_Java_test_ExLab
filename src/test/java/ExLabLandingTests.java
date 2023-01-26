@@ -213,5 +213,69 @@ public class ExLabLandingTests {
                 clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
+    @Test (description = "Became mentor button is displayed")
+    public void test_30() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStartUpBlock().isBecameMentorButtonDisplayed(),
+                "TEST FAIL: Became mentor button is NOT displayed");
+    }
+
+    @Test (description = "Header StartUp is displayed")
+    public void test_31() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStartUpBlock().isStartUpHeaderDisplayed(),
+                "TEST FAIL: Header StartUp is NOT displayed");
+    }
+    @Test (description = "StartUp text is displayed")
+    public void test_32() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStartUpBlock().isStartUpTextDisplayed(),
+                "TEST FAIL: StartUp text is NOT displayed");
+    }
+
+    @Test (description = "Button 'Find a specialist' is displayed")
+    public void test_33() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStartUpButton().isStartUpButtonDisplayed(),"TEST FAIL: Button 'Find a specialist' is NOT displayed");
+    }
+
+    @Test (description = "Help project header is displayed")
+    public void test_34() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToHelpProjectBlock().isHelpProjectHeaderDisplayed(),"TEST FAIL: Help project header is NOT displayed");
+    }
+
+    @Test (description = "Help project text is displayed")
+    public void test_35() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToHelpProjectBlock().isHelpProjectTextDisplayed(),"TEST FAIL: Help project text is NOT displayed");
+    }
+
+    @Test (description = "Boosty button is displayed")
+    public void test_36() throws InterruptedException{
+        Assert.assertTrue(landingPage.moveToHelpProjectBlock().isHelpProjectBoostyButtonDisplayed(),"TEST FAIL: Boosty button is NOT displayed");
+    }
+
+    @Test (description = "Boosty button opens ExLab.boosty page")
+    public void test_37() throws InterruptedException{
+        landingPage.moveToHelpProjectBlock().clickBoostyButton().changeToNewTab();
+        Assert.assertEquals(landingPage.getUrl(),"https://boosty.to/exlab_startup",
+                "TEST FAIL: Boosty button NOT opens ExLab.boosty page");
+    }
+
+    @Test (description = "Patreon button is displayed")
+    public void test_38() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToHelpProjectBlock().isHelpProjectPatreonButtonDisplayed(),"TEST FAIL: Patreon button is NOT displayed");
+    }
+
+    @Test (description = "Stay Connected header is displayed")
+    public void test_39() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStayConnectedModule().isStayConnectedHeaderDisplayed(),
+                "TEST FAIL: Stay Connected header is NOT displayed");
+    }
+
+    @Test (description = "Stay Connected text is displayed")
+    public void test_40() throws InterruptedException {
+        Assert.assertTrue(landingPage.moveToStayConnectedModule().isStayConnectedTextDisplayed(),"TEST FAIL: Stay Connected text is NOT displayed");
+    }
+
 //    @Test (description = "")
+//    public void test_() throws InterruptedException {
+//        Assert.assertTrue(landingPage. ,
+//              "TEST FAIL: ");
+//    }
 }
