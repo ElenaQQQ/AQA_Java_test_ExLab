@@ -3,6 +3,7 @@ package pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.pagefactory.ByAll;
 import org.testng.Assert;
 
 import java.util.List;
@@ -92,7 +93,8 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//div[@id='mentors']/div[2]")
     private WebElement mentorsHeader;
 
-    private final By mentorsBlock = By.xpath("//div[@id='mentors']/div/div/div");
+    @FindBy (xpath = "//div[@id='mentors']/div/div/div")
+    private WebElement mentorsBlock1;
 
     @FindBy (xpath = "(//div[@id='mentors']//div/p/following-sibling::span)[1]")
     private WebElement mentors1InfoOpen;
@@ -142,9 +144,9 @@ public class LandingPage extends BasePage {
 
 
 
-    public LandingPage open(){
+    public void open(){
         loadPage();
-        return this;
+//        return this;
     }
 
     public void ifTitleExLabMatches(){
@@ -349,7 +351,7 @@ public class LandingPage extends BasePage {
     }
 
     public Integer countMentors(){
-        List<WebElement> list = driver.findElements(mentorsBlock);
+        List<WebElement> list = mentorsBlock1.findElements(By.xpath("//div[@id='mentors']/div/div/div"));
         return list.size();
     }
 
