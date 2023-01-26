@@ -10,18 +10,17 @@ import java.time.Duration;
 public class driver {
 
 private static WebDriver driver;
-    public static Actions actions;
+public static Actions actions;
 
 public static void createDriver(){
     WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver();
-//    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
     driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 
-    actions = new Actions(driver);
+//    actions = new Actions(driver);
     driver.manage().window().maximize();
 }
 
