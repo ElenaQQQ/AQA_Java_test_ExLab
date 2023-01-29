@@ -1,7 +1,5 @@
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageobject.LandingPage;
 
 import static Utils.Config.*;
@@ -11,17 +9,29 @@ import static driver.driver.quite;
 public class ExLabLandingTests {
     protected LandingPage landingPage;
 
-    @BeforeMethod
+    @BeforeGroups ("Mentors")
+    public void beforeMentorsGroup () {
+        System.out.println("Tests from Mentors group start");
+    }
+
+    @BeforeMethod (groups={"Mentors", "Header"})
     public void start () {
         createDriver();
         landingPage = new LandingPage();
         landingPage.open();
     }
 
-    @AfterMethod
+    @AfterMethod (groups={"Mentors", "Header"})
     public void finish() {
         quite();
     }
+
+    @AfterGroups ("Mentors")
+    public void afterMentorsGroup() {
+        System.out.println("Tests from Mentors group end");
+    }
+
+
 
     @Test (description = "ExLab landing is available by URL", groups = "Header")
     public void test_1() {
@@ -192,28 +202,28 @@ public class ExLabLandingTests {
         Assert.assertTrue(landingPage.scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
     }
 
-    @Test(description = "Mentors info opens by + click")
+    @Test(description = "Mentors info opens by + click", groups = "Mentors")
     public void test_26() throws InterruptedException {
         Assert.assertTrue(landingPage.menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
-    @Test (description = "Mentors foto is displayed")
+    @Test (description = "Mentors foto is displayed", groups = "Mentors")
     public void test_27() throws InterruptedException {
         Assert.assertTrue(landingPage.moveToMentorsHeader().clickMentorsInfoOpen().isMentorsFotoDisplayed());
     }
 
-    @Test (description = "Info about 4 mentors is displayed")
+    @Test (description = "Info about 4 mentors is displayed", groups = "Mentors")
     public void test_28() throws InterruptedException {
         Assert.assertEquals(landingPage.moveToMentorsHeader().countMentors(),4);
     }
 
-    @Test (description = "Mentors info is closed by clicking - click")
+    @Test (description = "Mentors info is closed by clicking - click", groups = "Mentors")
     public void test_29() throws InterruptedException {
         Assert.assertFalse(landingPage.menuMentorsClick().
                 clickMentorsInfoOpen().clickMentorsInfoOpen().checkMentorsInfo());
     }
 
-    @Test (description = "Became mentor button is displayed")
+    @Test (description = "Became mentor button is displayed", groups = "Mentors")
     public void test_30() throws InterruptedException {
         Assert.assertTrue(landingPage.moveToStartUpBlock().isBecameMentorButtonDisplayed(),
                 "TEST FAIL: Became mentor button is NOT displayed");
