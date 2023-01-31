@@ -66,7 +66,8 @@ public class ExLabLandingTests {
 
     @Test (description = "About us menu link opens About us module", groups = "Header")
     public void test_5 ()  {
-        Assert.assertTrue(landingPage.menuAboutUsClick().isAboutUsHeaderDisplayed());
+        landingPage.menuAboutUsClick();
+        Assert.assertTrue(landingPage.isAboutUsHeaderDisplayed());
     }
 
     @Test (description = "Menu item Projects is displayed", groups = "Header")
@@ -76,11 +77,13 @@ public class ExLabLandingTests {
 
     @Test (description = "Menu item Projects opens Projects module", groups = "Header")
     public void test_7() throws InterruptedException {
-        Assert.assertTrue(landingPage.menuProjectsClick().isProjectsHeaderDisplayed());
+        landingPage.menuProjectsClick();
+        Assert.assertTrue(landingPage.isProjectsHeaderDisplayed());
     }
 
     @Test (description = "Menu item Mentors is displayed", groups = "Header")
     public void test_8() {
+
         Assert.assertTrue(landingPage.isMenuMentorsDisplayed());
     }
 
@@ -91,17 +94,20 @@ public class ExLabLandingTests {
 
     @Test (description = "Menu item Mentors opens Mentors module", groups = "Header")
     public void test_9_1() throws InterruptedException {
-        Assert.assertTrue(landingPage.scrollToTheEnd().moveToMentorsHeader().isMentorsHeaderDisplayed());
+        landingPage.scrollToTheEnd().moveToMentorsHeader();
+        Assert.assertTrue(landingPage.isMentorsHeaderDisplayed());
     }
 
     @Test (description = "Menu item StartUp is displayed", groups = "Header")
     public void test_10(){
+
         Assert.assertTrue(landingPage.isMenuStartUpDisplayed());
     }
 
     @Test (description = "Menu item StartUp opens Start up module", groups = "Header")
     public void test_11() throws InterruptedException {
-        Assert.assertTrue(landingPage.menuStartUpClick().isStartUpHeaderDisplayed());
+        landingPage.menuStartUpClick();
+        Assert.assertTrue(landingPage.isStartUpHeaderDisplayed());
     }
 
     @Test (description = "BackgroundColor Icon is displayed", groups = "Header")
@@ -137,22 +143,26 @@ public class ExLabLandingTests {
 
     @Test (description = "About Us text is displayed")
     public void test_17() throws InterruptedException {
-        Assert.assertTrue(landingPage.moveToAboutUsHeader().isAboutUsTextDisplayed());
+        landingPage.moveToAboutUsHeader();
+        Assert.assertTrue(landingPage.isAboutUsTextDisplayed());
     }
 
     @Test (description = "Why ExLab subheader is displayed")
     public void test_18() throws InterruptedException {
-        Assert.assertTrue(landingPage.moveToWhyExLabBlock().isAboutUsWhyExLabSubheaderDisplayed());
+        landingPage.moveToWhyExLabBlock();
+        Assert.assertTrue(landingPage.isAboutUsWhyExLabSubheaderDisplayed());
     }
 
     @Test (description = "Why ExLab text is displayed")
     public void test_19() throws InterruptedException {
-        Assert.assertTrue(landingPage.moveToWhyExLabBlock().isAboutUsWhyExLabTextDisplayed());
+        landingPage.moveToWhyExLabBlock();
+        Assert.assertTrue(landingPage.isAboutUsWhyExLabTextDisplayed());
     }
 
     @Test (description = "Join button is displayed")
     public void test_20() throws InterruptedException {
-        Assert.assertTrue(landingPage.moveToWhyExLabBlock().isAboutUsWhyExLabJoinButtonDisplayed());
+        landingPage.moveToWhyExLabBlock();
+        Assert.assertTrue(landingPage.isAboutUsWhyExLabJoinButtonDisplayed());
     }
 
     @Test (description = "Join button opens telegram inviting page")
@@ -204,7 +214,8 @@ public class ExLabLandingTests {
 
     @Test(description = "Mentors info opens by + click", groups = "Mentors")
     public void test_26() throws InterruptedException {
-        Assert.assertTrue(landingPage.menuMentorsClick().clickMentorsInfoOpen().checkMentorsInfo());
+        landingPage.menuMentorsClick().clickMentorsInfoOpen();
+        Assert.assertTrue(landingPage.checkMentorsInfo());
     }
 
     @Test (description = "Mentors foto is displayed", groups = "Mentors")
