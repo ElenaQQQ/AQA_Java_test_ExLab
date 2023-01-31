@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.pagefactory.ByAll;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
@@ -141,8 +142,26 @@ public class LandingPage extends BasePage {
 
     // FOOTER
 
+    @FindBy (xpath = "//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']")
+    private static WebElement footerExLabLogo;
 
+    @FindBy (xpath = "//div[@id='footer']//div[contains(text(),'ExLab')]")
+    private static WebElement footerCopywrite;
 
+    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'linkedin')]")
+    private static WebElement footerLinkedinLink;
+
+    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'instagram')]")
+    private static WebElement footerInstagramLink;
+
+    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'t.me')]")
+    private static WebElement footerTelegramLink;
+
+    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'youtube')]")
+    private static WebElement footerYoutubeLink;
+
+    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'@exlab')]")
+    private static WebElement footerEmail;
 
     public void open(){
         loadPage();
@@ -419,6 +438,28 @@ public class LandingPage extends BasePage {
 
     public Boolean isStayConnectedTextDisplayed(){
         return isDisplayed(stayConnectedText);
+    }
+
+    public LandingPage moveToFooter() throws InterruptedException {
+        moveTo(footerCopywrite);
+        return this;
+    }
+
+    @DataProvider (name = "Locators for tests 41-51")
+    public static Object[][] getData(){
+        return new Object[][]{
+                {"41", footerExLabLogo},
+                {"42", footerCopywrite},
+                {"51", footerEmail},
+                {"45", footerInstagramLink},
+                {"43", footerLinkedinLink},
+                {"47", footerTelegramLink},
+                {"49", footerYoutubeLink}
+        };
+    }
+
+    public Boolean isFooterExLabLogoDisplayed(){
+        return isDisplayed(footerExLabLogo);
     }
 
 }

@@ -1,3 +1,4 @@
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.LandingPage;
@@ -292,6 +293,20 @@ public class ExLabLandingTests {
     @Test (description = "Stay Connected text is displayed")
     public void test_40() throws InterruptedException {
         Assert.assertTrue(landingPage.moveToStayConnectedModule().isStayConnectedTextDisplayed(),"TEST FAIL: Stay Connected text is NOT displayed");
+    }
+
+    @Test (dataProvider = "Locators for tests 41-51", dataProviderClass = LandingPage.class)
+    public void tests_41_51 (String testNumber, WebElement locator) throws InterruptedException {
+        landingPage.moveToFooter();
+        Assert.assertTrue(landingPage.isDisplayed(locator));
+        System.out.println("TEST PASSED. Test number is " + testNumber);
+    }
+
+    @Test (description = "Logo ExLab in Footer is displayed")
+    public void test_41 () throws InterruptedException {
+        landingPage.moveToFooter();
+        Assert.assertTrue(landingPage.isFooterExLabLogoDisplayed(),
+              "TEST FAIL: Logo ExLab in Footer is NOT displayed");
     }
 
 //    @Test (description = "")

@@ -46,8 +46,9 @@ public abstract  class BasePage {
 
     public Boolean isDisplayed(WebElement locator) {
         wait.until(ExpectedConditions.visibilityOf(locator));
+        System.out.println("TEST PASSED: Element " + locator.getText() + " is displayed");
         return locator.isDisplayed();
-//        System.out.println("TEST PASSED: Element " + locator.getText() + " is displayed");
+
     }
 
     protected void moveTo(WebElement webElement) throws InterruptedException {
