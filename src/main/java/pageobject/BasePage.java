@@ -1,5 +1,6 @@
 package pageobject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebDriver;
@@ -37,9 +38,10 @@ public abstract  class BasePage {
         return driver.getCurrentUrl();
     }
 
-    public void changeToNewTab() {
+    public void changeToNewTab() throws InterruptedException {
         ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
         getDriver().switchTo().window(tabs.get(1));
+        Thread.sleep(5000);
     }
 
     public JavascriptExecutor js;
@@ -51,10 +53,22 @@ public abstract  class BasePage {
 
     }
 
+    public Boolean isDisplayed(By locator) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+//        System.out.println("TEST PASSED: Element " + locator.getText() + " is displayed");
+//        return locator.isDisplayed();
+        return driver.findElement(locator).isDisplayed();
+    }
+
     protected void moveTo(WebElement webElement) throws InterruptedException {
         Thread.sleep(THREAD_SLEEP_WAIT);
         actions.scrollToElement(webElement).build().perform();
 //        js.executeScript("arguments[0].scrollIntoView();", locator);
+    }
+
+    protected void moveTo(By locator) throws InterruptedException {
+        Thread.sleep(THREAD_SLEEP_WAIT);
+        actions.scrollToElement(driver.findElement(locator)).build().perform();
     }
 
     public void delayAndClick(WebElement locator) throws InterruptedException {

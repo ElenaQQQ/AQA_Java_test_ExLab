@@ -1,11 +1,10 @@
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageobject.LandingPage;
 
 import static Utils.Config.*;
-import static driver.driver.createDriver;
-import static driver.driver.quite;
+import static driver.driver.*;
 
 public class ExLabLandingTests {
     protected LandingPage landingPage;
@@ -296,17 +295,28 @@ public class ExLabLandingTests {
     }
 
     @Test (dataProvider = "Locators for tests 41-51", dataProviderClass = LandingPage.class)
-    public void tests_41_51 (String testNumber, WebElement locator) throws InterruptedException {
+    public void tests_41_42_43_45_47_49_51 (String testNumber, By locator) throws InterruptedException {
         landingPage.moveToFooter();
-        Assert.assertTrue(landingPage.isDisplayed(locator));
+        Assert.assertTrue(landingPage.isDisplayed(locator),
+                "TEST FAILED: Test number is " + testNumber);
         System.out.println("TEST PASSED. Test number is " + testNumber);
     }
 
-    @Test (description = "Logo ExLab in Footer is displayed")
-    public void test_41 () throws InterruptedException {
-        landingPage.moveToFooter();
-        Assert.assertTrue(landingPage.isFooterExLabLogoDisplayed(),
-              "TEST FAIL: Logo ExLab in Footer is NOT displayed");
+    @Test (dataProvider = "Locators for tests 44,46,48,50", dataProviderClass = LandingPage.class)
+    public void tests_44_46_48_50 (String testNumber, By locator, String expectedUrl) throws InterruptedException {
+        landingPage.moveToFooter().delayAndClick1(getDriver().findElement(locator)).changeToNewTab();
+        String actualUrl = landingPage.getUrl();
+                Assert.assertTrue(actualUrl.contains(expectedUrl),
+                "TEST FAILED: Test number is " + testNumber);
+        System.out.println("TEST PASSED. Test number is " + testNumber);
+    }
+
+    @Test (description = "Youtube link in footer opens correct page")
+    public void test_50 () throws InterruptedException {
+        landingPage.moveToFooter().clickYoutubeLink().changeToNewTab();
+        landingPage.acceptCookies();
+        Assert.assertEquals(landingPage.getUrl(),"https://www.youtube.com/channel/UC-TAnVYVN7qg5dgsYQJkuvA",
+              "TEST FAIL: Youtube link in footer NOT opens correct page");
     }
 
 //    @Test (description = "")

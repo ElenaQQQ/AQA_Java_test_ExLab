@@ -3,7 +3,6 @@ package pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.pagefactory.ByAll;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 
@@ -142,26 +141,34 @@ public class LandingPage extends BasePage {
 
     // FOOTER
 
-    @FindBy (xpath = "//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']")
-    private static WebElement footerExLabLogo;
+//    @FindBy (xpath = "//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']")
+//    public static WebElement footerExLabLogo;
 
-    @FindBy (xpath = "//div[@id='footer']//div[contains(text(),'ExLab')]")
-    private static WebElement footerCopywrite;
+//    @FindBy (xpath = "//div[@id='footer']//div[contains(text(),'ExLab')]")
+//    private static WebElement footerCopywrite;
 
-    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'linkedin')]")
-    private static WebElement footerLinkedinLink;
+//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'linkedin')]")
+//    private static WebElement footerLinkedinLink;
 
-    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'instagram')]")
-    private static WebElement footerInstagramLink;
+//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'instagram')]")
+//    private static WebElement footerInstagramLink;
 
-    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'t.me')]")
-    private static WebElement footerTelegramLink;
+//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'t.me')]")
+//    private static WebElement footerTelegramLink;
 
-    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'youtube')]")
-    private static WebElement footerYoutubeLink;
+//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'youtube')]")
+//    private static WebElement footerYoutubeLink;
 
-    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'@exlab')]")
-    private static WebElement footerEmail;
+//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'@exlab')]")
+//    private static WebElement footerEmail;
+
+    private static By footerExLabLogo = By.xpath("//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']");
+    private static By footerCopywrite = By.xpath("//div[@id='footer']//div[contains(text(),'ExLab')]");
+    private static By footerLinkedinLink = By.xpath("//div[@id='footer']//a[contains(@href,'linkedin')]");
+    private static By footerInstagramLink = By.xpath("//div[@id='footer']//a[contains(@href,'instagram')]");
+    private static By footerTelegramLink = By.xpath("//div[@id='footer']//a[contains(@href,'t.me')]");
+    private static By footerYoutubeLink = By.xpath("//div[@id='footer']//a[contains(@href,'youtube')]");
+    private static By footerEmail = By.xpath("//div[@id='footer']//a[contains(@href,'@exlab')]");
 
     public void open(){
         loadPage();
@@ -458,8 +465,33 @@ public class LandingPage extends BasePage {
         };
     }
 
+    @DataProvider (name = "Locators for tests 44,46,48,50")
+    public static Object[][] getData1(){
+        return new Object[][]{
+                {"44", footerLinkedinLink, "linkedin"},
+                {"46", footerInstagramLink, "instagram"},
+                {"48", footerTelegramLink, "t.me"},
+                {"50", footerYoutubeLink, "youtube"},
+        };
+    }
+
     public Boolean isFooterExLabLogoDisplayed(){
         return isDisplayed(footerExLabLogo);
+    }
+
+    public LandingPage delayAndClick1(WebElement locator) throws InterruptedException {
+        delayAndClick(locator);
+        return this;
+    }
+
+    public LandingPage clickYoutubeLink() throws InterruptedException{
+        delayAndClick(driver.findElement(footerYoutubeLink));
+        return this;
+    }
+
+    public void acceptCookies() throws InterruptedException {
+        driver.findElement(By.xpath("(//span[contains(text(),'Отклонить все')])[1]")).click();
+        Thread.sleep(500);
     }
 
 }
