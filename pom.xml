@@ -18,6 +18,9 @@
     <selenium.version>4.7.1</selenium.version>
     <webdrivermanager.version>5.3.1</webdrivermanager.version>
     <suiteXmlFile>test</suiteXmlFile>
+
+    <aspectj.version>1.9.7</aspectj.version>
+    <allure.version>2.20.1</allure.version>
   </properties>
 
   <dependencies>
@@ -48,6 +51,11 @@
     <!--      <artifactId>selenium-api</artifactId>-->
     <!--      <version>4.3.0</version>-->
     <!--    </dependency>-->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -60,8 +68,39 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/${suiteXmlFile}.xml</suiteXmlFile>
           </suiteXmlFiles>
+
+          <argLine>    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
+          <systemProperties>
+            <property>
+              <!-- папка, в которую будут генерироваться отчёты Allure -->
+              <name>allure.results.directory</name>
+              <value>${project.build.directory}/allure-results</value>
+            </property>
+          </systemProperties>
+        </configuration>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
+
+      </plugin>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.10.0</version>
+        <configuration>
+          <reportVersion>2.20.1</reportVersion>
         </configuration>
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+  </reporting>
 </project>
+
