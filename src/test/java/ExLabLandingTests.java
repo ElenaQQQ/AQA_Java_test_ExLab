@@ -1,10 +1,10 @@
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pageobject.LandingPage;
+import pageObject.LandingPage;
 
-import static Utils.Config.*;
-import static driver.driver.*;
+import static utils.Config.*;
+import static driver.Driver.*;
 
 public class ExLabLandingTests {
     protected LandingPage landingPage;
@@ -319,9 +319,4 @@ public class ExLabLandingTests {
               "TEST FAIL: Youtube link in footer NOT opens correct page");
     }
 
-//    @Test (description = "")
-//    public void test_() throws InterruptedException {
-//        Assert.assertTrue(landingPage. ,
-//              "TEST FAIL: ");
-//    }
 }

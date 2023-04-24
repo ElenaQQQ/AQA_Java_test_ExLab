@@ -1,4 +1,4 @@
-package pageobject;
+package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,8 +12,8 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
 import java.util.ArrayList;
 
-import static Utils.Config.*;
-import static driver.driver.getDriver;
+import static utils.Config.*;
+import static driver.Driver.getDriver;
 public abstract  class BasePage {
 
     protected WebDriver driver;

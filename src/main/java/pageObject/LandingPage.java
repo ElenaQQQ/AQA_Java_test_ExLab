@@ -1,4 +1,4 @@
-package pageobject;
+package pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -162,13 +162,13 @@ public class LandingPage extends BasePage {
 //    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'@exlab')]")
 //    private static WebElement footerEmail;
 
-    private static By footerExLabLogo = By.xpath("//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']");
-    private static By footerCopywrite = By.xpath("//div[@id='footer']//div[contains(text(),'ExLab')]");
-    private static By footerLinkedinLink = By.xpath("//div[@id='footer']//a[contains(@href,'linkedin')]");
-    private static By footerInstagramLink = By.xpath("//div[@id='footer']//a[contains(@href,'instagram')]");
-    private static By footerTelegramLink = By.xpath("//div[@id='footer']//a[contains(@href,'t.me')]");
-    private static By footerYoutubeLink = By.xpath("//div[@id='footer']//a[contains(@href,'youtube')]");
-    private static By footerEmail = By.xpath("//div[@id='footer']//a[contains(@href,'@exlab')]");
+    private static final By footerExLabLogo = By.xpath("//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']");
+    private static final By footerCopywrite = By.xpath("//div[@id='footer']//div[contains(text(),'ExLab')]");
+    private static final By footerLinkedinLink = By.xpath("//div[@id='footer']//a[contains(@href,'linkedin')]");
+    private static final By footerInstagramLink = By.xpath("//div[@id='footer']//a[contains(@href,'instagram')]");
+    private static final By footerTelegramLink = By.xpath("//div[@id='footer']//a[contains(@href,'t.me')]");
+    private static final By footerYoutubeLink = By.xpath("//div[@id='footer']//a[contains(@href,'youtube')]");
+    private static final By footerEmail = By.xpath("//div[@id='footer']//a[contains(@href,'@exlab')]");
 
     public void open(){
         loadPage();

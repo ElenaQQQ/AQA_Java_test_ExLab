@@ -8,9 +8,9 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
-import static Utils.Config.*;
+import static utils.Config.*;
 
-public class driver {
+public class Driver {
 
 private static WebDriver driver;
 public static Actions actions;
