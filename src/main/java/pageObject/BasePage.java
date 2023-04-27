@@ -55,15 +55,12 @@ public abstract  class BasePage {
 
     public Boolean isDisplayed(By locator) {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
-//        System.out.println("TEST PASSED: Element " + locator.getText() + " is displayed");
-//        return locator.isDisplayed();
         return driver.findElement(locator).isDisplayed();
     }
 
     protected void moveTo(WebElement webElement) throws InterruptedException {
         Thread.sleep(THREAD_SLEEP_WAIT);
         actions.scrollToElement(webElement).build().perform();
-//        js.executeScript("arguments[0].scrollIntoView();", locator);
     }
 
     protected void moveTo(By locator) throws InterruptedException {

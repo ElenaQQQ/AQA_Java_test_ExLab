@@ -141,27 +141,6 @@ public class LandingPage extends BasePage {
 
     // FOOTER
 
-//    @FindBy (xpath = "//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']")
-//    public static WebElement footerExLabLogo;
-
-//    @FindBy (xpath = "//div[@id='footer']//div[contains(text(),'ExLab')]")
-//    private static WebElement footerCopywrite;
-
-//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'linkedin')]")
-//    private static WebElement footerLinkedinLink;
-
-//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'instagram')]")
-//    private static WebElement footerInstagramLink;
-
-//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'t.me')]")
-//    private static WebElement footerTelegramLink;
-
-//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'youtube')]")
-//    private static WebElement footerYoutubeLink;
-
-//    @FindBy (xpath = "//div[@id='footer']//a[contains(@href,'@exlab')]")
-//    private static WebElement footerEmail;
-
     private static final By footerExLabLogo = By.xpath("//div[@id='footer']//div[@class='sc-fIavCj fEzmxG']");
     private static final By footerCopywrite = By.xpath("//div[@id='footer']//div[contains(text(),'ExLab')]");
     private static final By footerLinkedinLink = By.xpath("//div[@id='footer']//a[contains(@href,'linkedin')]");
@@ -172,7 +151,6 @@ public class LandingPage extends BasePage {
 
     public void open(){
         loadPage();
-//        return this;
     }
 
     public void ifTitleExLabMatches(){
@@ -278,9 +256,7 @@ public class LandingPage extends BasePage {
         js.executeScript("arguments[0].scrollIntoView();", menuAboutUs);
 //        Thread.sleep(500);
 //        js.executeScript("arguments[0].scrollIntoView();", );
-//        js.executeScript("arguments[0].scrollIntoView();", );
-//        js.executeScript("arguments[0].scrollIntoView();", );
-//        js.executeScript("arguments[0].scrollIntoView();", );
+
         return this;
     }
 
